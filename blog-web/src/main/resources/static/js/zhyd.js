@@ -7,6 +7,7 @@
  * @since 1.0
  */
 
+var siteUrl='/siteurl';
 // 动态切换浏览器窗口title https://zhangge.net/
 jQuery(document).ready(function() {
     function c() {
@@ -320,7 +321,7 @@ $(function () {
         $.bubble.unbind();
         $.ajax({
             type: "post",
-            url: "/api/doPraise/" + id,
+            url: siteUrl+"/api/doPraise/" + id,
             success: function (json) {
                 $.alert.ajaxSuccess(json);
                 if (json.status === 200) {
@@ -380,7 +381,7 @@ $(function () {
     if ($('#notice-box') && $('#notice-box')[0]) {
         $.ajax({
             type: "post",
-            url: "/api/listNotice",
+            url: siteUrl+"/api/listNotice",
             success: function (json) {
                 if (json.status == 200 && json.data && json.data.length > 0) {
                     var tpl = '{{#data}}<li class="scrolltext-title">'
@@ -456,7 +457,7 @@ $(function () {
 
     $.ajax({
         type: "get",
-        url: "/api/ads",
+        url: siteUrl+"/api/ads",
         success: function (json) {
             if (json.status == 200 && json.data) {
                 var data = json.data;

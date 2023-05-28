@@ -12,7 +12,7 @@ public class BlogCodegenApplication {
                 .setDriver("com.mysql.cj.jdbc.Driver")
                 .setUrl("jdbc:mysql://127.0.0.1:3306/dblog?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false")
                 .setUsername("root")
-                .setPassword("root")
+                .setPassword("123456")
                 .setPrimaryKeyType("String")
                 .setBasePackage("com.zyd.blog")
                 .setBeansPackage("com.zyd.blog.persistence.beans")

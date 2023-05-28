@@ -6,6 +6,9 @@
  * @author zhyd(yadong.zhang0415#gmail.com)
  * @link https://docs.zhyd.me
  */
+
+var siteUrl='/siteurl';
+
 var _form = {
     valid: function(form){
         var valid = true;
@@ -95,7 +98,7 @@ $.extend({
             this.sid = sid;
             $.ajax({
                 type: "post",
-                url: "/api/comments",
+                url: siteUrl+"/api/comments",
                 data: {sid: sid, pageNumber: pageNumber || 1},
                 success: function (json) {
                     $.alert.ajaxSuccess(json);
@@ -303,7 +306,7 @@ $.extend({
                 console.log(data);
                 $.ajax({
                     type: "post",
-                    url: "/api/comment",
+                    url: siteUrl+"/api/comment",
                     data: data + '&sid=' + $.comment.sid,
                     success: function (json) {
                         $.alert.ajaxSuccess(json);
@@ -347,7 +350,7 @@ $.extend({
             $.bubble.unbind();
             $.ajax({
                 type: "post",
-                url: "/api/doSupport/" + pid,
+                url: siteUrl+"/api/doSupport/" + pid,
                 success: function (json) {
                     $.alert.ajaxSuccess(json);
                     if(json.status == 200){
@@ -368,7 +371,7 @@ $.extend({
             $.bubble.unbind();
             $.ajax({
                 type: "post",
-                url: "/api/doOppose/" + pid,
+                url: siteUrl+"/api/doOppose/" + pid,
                 success: function (json) {
                     $.alert.ajaxSuccess(json);
                     if(json.status == 200){

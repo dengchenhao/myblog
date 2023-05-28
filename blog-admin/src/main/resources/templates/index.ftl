@@ -1,5 +1,6 @@
 <#include "include/macros.ftl">
 <@header>
+    <meta name="baidu-site-verification" content="codeva-Igxwjz5xlO" />
     <style>
         .notice-box ul {
             -webkit-padding-start: 40px!important;
@@ -272,7 +273,7 @@
 </div>
 </div>
 <#-- 网站首页的项目介绍内容 -->
-<@aboutOneBlog></@aboutOneBlog>
+<!--<@aboutOneBlog></@aboutOneBlog>-->
 <@footer>
 <script src="https://cdn.jsdelivr.net/npm/echarts@4.1.0/dist/echarts.min.js"></script>
 <script src="/assets/js/zhyd.echarts.js"></script>

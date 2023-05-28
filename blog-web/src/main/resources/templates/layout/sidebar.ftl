@@ -38,7 +38,7 @@
                         </ul>
                         <!-- 方案二：列表展示 -->
                         <#--<ul class="list-unstyled">
-                            <li><i class="fa fa-info-circle fa-fw"></i>博主：<small>张亚东</small></li>
+                            <li><i class="fa fa-info-circle fa-fw"></i>博主：<small>邓晨皓</small></li>
                             <li><i class="fa fa-user-circle fa-fw"></i>职业：<small>码农</small></li>
                             <li><i class="fa fa-home fa-fw"></i>籍贯：<small>长白山某棵树上</small></li>
                             <li><i class="fa fa-envelope-square fa-fw"></i>邮箱：<small>10000@qq.com</small></li>
@@ -85,12 +85,12 @@
                             </span>
                         </div>
                         <div style="background-color: #f5f5f5;line-height: 1.7;border-radius: 3px;color: #333;" class="newest_comment_content pd10 mar10-t pos-r mar5-b pjt fs13">
-                            <a href="${item.sourceUrl}#comment-${item.id?c}" title="${item.briefContent!}">
+                            <a href="${config.siteUrl}${item.sourceUrl}#comment-${item.id?c}" title="${item.briefContent!}">
                                 ${item.briefContent!}
                             </a>
                         </div>
                         <span class="gray fs12" style="word-break: break-all;">来自：
-                            <a href="${item.sourceUrl}#comment-${item.id?c}">${item.articleTitle}</a>
+                            <a href="${config.siteUrl}${item.sourceUrl}#comment-${item.id?c}">${item.articleTitle}</a>
                         </span>
                     </li>
                 </#list>

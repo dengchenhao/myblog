@@ -277,7 +277,7 @@
         $("#verifyPassword").click(function (){
             var password = $("#password").val();
             var articleId = "${article.id}";
-            $.post("/api/verifyArticlePassword", {articleId : articleId, password: password}, function (json) {
+            $.post("${config.siteUrl}/api/verifyArticlePassword", {articleId : articleId, password: password}, function (json) {
                 $.alert.ajaxSuccess(json);
                 if(json.status === 200) {
                     $(".blog-info-body").html(json.data);
@@ -296,7 +296,7 @@
             var desc = "${article.description}";
             var imgUrl = "${article.coverImage}";
 
-            $.post("/api/jssdkGetSignature", {url: encodeUrl}, function (json) {
+            $.post("${config.siteUrl}/api/jssdkGetSignature", {url: encodeUrl}, function (json) {
                 // $.alert.ajaxSuccess(json);
 
                 if (json.status === 200) {

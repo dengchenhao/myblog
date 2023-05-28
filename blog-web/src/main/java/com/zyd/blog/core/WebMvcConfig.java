@@ -22,7 +22,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(braumIntercepter)
-                .excludePathPatterns("/assets/**", "/error/**", "favicon.ico", "/css/**", "/js/**", "/img/**")
+                .excludePathPatterns("/assets/**", "/error/**", "favicon-bak.ico", "/css/**", "/js/**", "/img/**")
                 .addPathPatterns("/**");
     }
 }
