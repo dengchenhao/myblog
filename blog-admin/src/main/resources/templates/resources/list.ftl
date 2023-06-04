@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">资源管理</li>
             </ol>
         </@breadcrumb>
@@ -188,12 +188,12 @@
                     }
                 }]
             }, {
-                listUrl: "/resources/list",
-                getInfoUrl: "/resources/get/{id}",
-                updateUrl: "/resources/edit",
-                removeUrl: "/resources/remove",
-                createUrl: "/resources/add",
-                saveRolesUrl: "/resources/saveRoleResources"
+                listUrl: "${config.cmsUrl}/resources/list",
+                getInfoUrl: "${config.cmsUrl}/resources/get/{id}",
+                updateUrl: "${config.cmsUrl}/resources/edit",
+                removeUrl: "${config.cmsUrl}/resources/remove",
+                createUrl: "${config.cmsUrl}/resources/add",
+                saveRolesUrl: "${config.cmsUrl}/resources/saveRoleResources"
             })
         });
     </script>

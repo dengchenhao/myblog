@@ -108,7 +108,7 @@
                     $("#selectable").html(config.selectable), $("#selected").html(0);
                     zhyd.mask.loading($(".material-body"), "加载中...");
                     $.ajax({
-                        url: "/file/list",
+                        url: "${config.cmsUrl}/file/list",
                         data: {pageNumber: config && config.pageNumber ? config.pageNumber : 1},
                         type: "POST",
                         success: function (json) {

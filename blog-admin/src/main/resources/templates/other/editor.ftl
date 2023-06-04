@@ -89,7 +89,7 @@
         zhyd.wangEditor.init({
             container: "#editor",
             textareaName: "content",
-            uploadUrl: "/api/uploadFile",
+            uploadUrl: "${config.cmsUrl}/api/uploadFile",
             uploadFileName: "file",
             uploadType: "goods",
             customCss: {
@@ -101,7 +101,7 @@
 
         zhyd.tinymce.init({
             selector: "#editor",
-            uploadUrl: "/api/uploadFile",
+            uploadUrl: "${config.cmsUrl}/api/uploadFile",
             uploadFileName: "file",
             textareaName: "content2",
         })

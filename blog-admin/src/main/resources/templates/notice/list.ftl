@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">网站通知管理</li>
             </ol>
         </@breadcrumb>
@@ -93,11 +93,11 @@
         $(function () {
             var options = {
                 modalName: "网站通知",
-                url: "/notice/list",
-                getInfoUrl: "/notice/get/{id}",
-                updateUrl: "/notice/edit",
-                removeUrl: "/notice/remove",
-                createUrl: "/notice/add",
+                url: "${config.cmsUrl}/notice/list",
+                getInfoUrl: "${config.cmsUrl}/notice/get/{id}",
+                updateUrl: "${config.cmsUrl}/notice/edit",
+                removeUrl: "${config.cmsUrl}/notice/remove",
+                createUrl: "${config.cmsUrl}/notice/add",
                 columns: [
                     {
                         checkbox: true
@@ -150,7 +150,7 @@
                 $.alert.confirm("确定发布该条通知？发布后将对用户可见！", function () {
                     $.ajax({
                         type: "post",
-                        url: "/notice/release/" + id,
+                        url: "${config.cmsUrl}/notice/release/" + id,
                         success: function (json) {
                             $.alert.ajaxSuccess(json);
                             table.refresh();
@@ -168,7 +168,7 @@
                 $.alert.confirm("确定撤回该条通知？撤回后将对用户不可见！", function () {
                     $.ajax({
                         type: "post",
-                        url: "/notice/withdraw/" + id,
+                        url: "${config.cmsUrl}/notice/withdraw/" + id,
                         success: function (json) {
                             $.alert.ajaxSuccess(json);
                             table.refresh();

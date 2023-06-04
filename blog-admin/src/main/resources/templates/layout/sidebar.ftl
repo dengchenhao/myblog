@@ -3,7 +3,7 @@
     <div class="menu_section">
         <ul class="nav side-menu">
             <@shiro.user>
-                <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                <li><a href="${config.cmsUrl}/"><i class="fa fa-home"></i>首页</a></li>
             </@shiro.user>
             <@zhydTag method="menus" userId="${user.id}">
                 <#if menus?? && menus?size gt 0>
@@ -15,7 +15,7 @@
                                     <#list item.nodes as node>
                                         <#if node.permission!>
                                             <@shiro.hasPermission name="${node.permission!}">
-                                                <li><a href="${node.url!}" ${(item.external?? && item.external)?string('target="_blank"','')}><i class="${node.icon!}"></i>${node.name!}</a></li>
+                                                <li><a href="${config.cmsUrl}${node.url!}" ${(item.external?? && item.external)?string('target="_blank"','')}><i class="${node.icon!}"></i>${node.name!}</a></li>
                                             </@shiro.hasPermission>
                                         <#else>
                                             <li><a href="${node.url!}" ${(item.external?? && item.external)?string('target="_blank"','')}><i class="${node.icon!}"></i>${node.name!}</a></li>
@@ -36,7 +36,7 @@
     <a >&nbsp;</a>
     <a >&nbsp;</a>
     <a >&nbsp;</a>
-    <a href="/passport/logout" data-toggle="tooltip" data-placement="top" title="" data-original-title="退出系统">
+    <a href="${config.cmsUrl}/passport/logout" data-toggle="tooltip" data-placement="top" title="" data-original-title="退出系统">
         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
     </a>
 </div>

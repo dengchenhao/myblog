@@ -6,7 +6,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <@breadcrumb>
                 <ol class="breadcrumb">
-                    <li><a href="/">首页</a></li>
+                    <li><a href="${config.cmsUrl}/">首页</a></li>
                     <li class="active">文章分类管理</li>
                 </ol>
             </@breadcrumb>
@@ -180,11 +180,11 @@
                     }
                 }]
             }, {
-                listUrl: "/type/list",
-                getInfoUrl: "/type/get/{id}",
-                updateUrl: "/type/edit",
-                removeUrl: "/type/remove",
-                createUrl: "/type/add"
+                listUrl: "${config.cmsUrl}/type/list",
+                getInfoUrl: "${config.cmsUrl}/type/get/{id}",
+                updateUrl: "${config.cmsUrl}/type/edit",
+                removeUrl: "${config.cmsUrl}/type/remove",
+                createUrl: "${config.cmsUrl}/type/add"
             });
 
             /**

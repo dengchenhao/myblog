@@ -72,7 +72,7 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12 top_tiles">
         <#-- 文章 -->
-        <a href="/articles" class="statistics-panel">
+        <a href="${config.cmsUrl}/articles" class="statistics-panel">
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 statistics-article" data-key="articleCount">
                 <div class="tile-stats statistics-box">
                     <div class="icon"><i style="color: #5470c6;" class="fa fa-envira"></i></div>
@@ -82,7 +82,7 @@
             </div>
         </a>
         <#-- 标签 -->
-        <a href="/article/tags" class="statistics-panel">
+        <a href="${config.cmsUrl}/article/tags" class="statistics-panel">
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 statistics-tag" data-key="tagCount">
                 <div class="tile-stats statistics-box">
                     <div class="icon"><i style="color: #91cc75;" class="fa fa-tags"></i></div>
@@ -92,7 +92,7 @@
             </div>
         </a>
         <#-- 分类 -->
-        <a href="/article/types" class="statistics-panel">
+        <a href="${config.cmsUrl}/article/types" class="statistics-panel">
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 statistics-type" data-key="typeCount">
                 <div class="tile-stats statistics-box">
                     <div class="icon"><i style="color: #fac858;" class="fa fa-th"></i></div>
@@ -102,7 +102,7 @@
             </div>
         </a>
         <#-- 评论 -->
-        <a href="/comments" class="statistics-panel">
+        <a href="${config.cmsUrl}/comments" class="statistics-panel">
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 statistics-comment" data-key="commentCount">
                 <div class="tile-stats statistics-box">
                     <div class="icon"><i style="color: #ee6666;" class="fa fa-comments-o"></i></div>
@@ -125,7 +125,7 @@
             </div>
         </a>
         <#--总赞数-->
-        <a href="/articles" class="statistics-panel">
+        <a href="${config.cmsUrl}/articles" class="statistics-panel">
             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 statistics-zanCount" data-key="zanCount">
                 <div class="tile-stats statistics-box">
                     <div class="icon"><i style="color: #FF6666;" class="fa fa-thumbs-o-up"></i></div>
@@ -198,7 +198,7 @@
             <div class="x_title">
                 <h2>近期文章 <small> </small></h2>
                 <ul class="nav navbar-right panel_toolbox">
-                    <li><a href="/articles" target="_blank" title="查看更多"><i class="fa fa-ellipsis-h"></i></a></li>
+                    <li><a href="${config.cmsUrl}/articles" target="_blank" title="查看更多"><i class="fa fa-ellipsis-h"></i></a></li>
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                 </ul>
                 <div class="clearfix"></div>
@@ -276,7 +276,7 @@
 <!--<@aboutOneBlog></@aboutOneBlog>-->
 <@footer>
 <script src="https://cdn.jsdelivr.net/npm/echarts@4.1.0/dist/echarts.min.js"></script>
-<script src="/assets/js/zhyd.echarts.js"></script>
+<script src="${config.cmsUrl}/assets/js/zhyd.echarts.js"></script>
 <#-- 显示或者关闭首页的弹窗，当点击“不再显示后”，如果清缓存，这个弹窗仍然会再次显示 -->
 <script type="text/javascript">
     var neverShowNoticeModal = localStorage.getItem("neverShowNoticeModal");
@@ -289,7 +289,7 @@
 </script>
     <script>
         /* 顶部卡片统计 */
-        $.post("/statistics/siteInfo", function (json) {
+        $.post("${config.cmsUrl}/statistics/siteInfo", function (json) {
             $.alert.ajaxSuccess(json);
             if (json.status == 200) {
                 //给隐藏域里面设置访问量，好让点击的时候能看到具体的数字，心理有个数
@@ -344,7 +344,7 @@
 
 
         /* 分类文章数统计 */
-        $.post("/statistics/listType", function (json) {
+        $.post("${config.cmsUrl}/statistics/listType", function (json) {
             $.alert.ajaxSuccess(json);
             if (json.status == 200) {
                 var jsonData = json.data;
@@ -357,7 +357,7 @@
         });
 
         /* 爬虫访问统计 */
-        $.post("/statistics/listSpider", function (json) {
+        $.post("${config.cmsUrl}/statistics/listSpider", function (json) {
             $.alert.ajaxSuccess(json);
             if (json.status == 200) {
                 var jsonData = json.data || [{name: '暂无', value: 0}];

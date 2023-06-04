@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">更新记录管理</li>
             </ol>
         </@breadcrumb>
@@ -84,11 +84,11 @@
 
             var options = {
                 modalName: "更新记录",
-                url: "/update/list",
-                getInfoUrl: "/update/get/{id}",
-                updateUrl: "/update/edit",
-                removeUrl: "/update/remove",
-                createUrl: "/update/add",
+                url: "${config.cmsUrl}/update/list",
+                getInfoUrl: "${config.cmsUrl}/update/get/{id}",
+                updateUrl: "${config.cmsUrl}/update/edit",
+                removeUrl: "${config.cmsUrl}/update/remove",
+                createUrl: "${config.cmsUrl}/update/add",
                 columns: [
                     {
                         checkbox: true

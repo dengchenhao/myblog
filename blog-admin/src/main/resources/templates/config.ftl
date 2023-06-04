@@ -4,7 +4,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">系统配置</li>
             </ol>
         </@breadcrumb>
@@ -1004,7 +1004,7 @@
         $(function () {
             var oldStorageType, firstLoad = true;
             $.ajax({
-                url: '/config/get',
+                url: '${config.cmsUrl}/config/get',
                 type: 'POST',
                 success: function (json) {
                     var data = json.data;
@@ -1024,7 +1024,7 @@
                 if (validator.checkAll($form)) {
                     $form.ajaxSubmit({
                         type: "POST",
-                        url: '/config/save',
+                        url: '${config.cmsUrl}/config/save',
                         success: function (json) {
                             $.alert.ajaxSuccess(json);
                         },

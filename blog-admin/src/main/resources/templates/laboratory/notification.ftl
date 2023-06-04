@@ -122,7 +122,7 @@
         <div class="col-md-12">
             <@breadcrumb>
                 <ol class="breadcrumb">
-                    <li><a href="/">首页</a></li>
+                    <li><a href="${config.cmsUrl}/">首页</a></li>
                     <li class="active">socket通知</li>
                 </ol>
             </@breadcrumb>
@@ -185,9 +185,9 @@
         $("#send-btn").click(function () {
             var $messages = $(".messages");
             var msg = $("#msg").val();
-            $.post("/api/notice", {msg : msg}, function (json) {
+            $.post("${config.cmsUrl}/api/notice", {msg : msg}, function (json) {
                 if (json.status == 200) {
-                    $messages.append('<div class="message me"><img src="/assets/images/loading.gif"><p class="info">' + msg + '</p></div>');
+                    $messages.append('<div class="message me"><img src="${config.cmsUrl}/assets/images/loading.gif"><p class="info">' + msg + '</p></div>');
                 } else {
                     if (json.message) {
                         $.alert.error(json.message);

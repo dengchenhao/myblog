@@ -90,7 +90,7 @@ var zhyd = window.zhyd || {
                     $(".bootstrap-tagsinput input").bind('keydown', function (event) {
                         var thisVal = $(this).val();
                         if (event.key == 'Enter' || event.keyCode == '13') {
-                            $.post('/tag/add', {name: thisVal, description: thisVal}, function (response) {
+                            $.post('${config.cmsUrl}/tag/add', {name: thisVal, description: thisVal}, function (response) {
                                 if (response.status !== 200) {
                                     $.alert.error(response.message);
                                 } else {
@@ -624,7 +624,7 @@ $(document).ready(function () {
         if (validator.checkAll($form)) {
             $form.ajaxSubmit({
                 type: "POST",
-                url: '/passport/updatePwd',
+                url: '${config.cmsUrl}/passport/updatePwd',
                 success: function (json) {
                     $.alert.ajaxSuccess(json);
                     if (json.status == 200) {

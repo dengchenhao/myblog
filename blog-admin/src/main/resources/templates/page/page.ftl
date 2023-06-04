@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <ol class="breadcrumb">
-            <li><a href="/">首页</a></li>
+            <li><a href="${config.cmsUrl}/">首页</a></li>
             <li class="active">自定义页面管理</li>
         </ol>
         <div class="x_panel">
@@ -66,11 +66,11 @@
         $(function () {
             var options = {
                 modalName: "自定义页面",
-                url: "/page/list",
-                getInfoUrl: "/page/get/{id}",
-                updateUrl: "/page/edit",
-                removeUrl: "/page/remove",
-                createUrl: "/page/add",
+                url: "${config.cmsUrl}/page/list",
+                getInfoUrl: "${config.cmsUrl}/page/get/{id}",
+                updateUrl: "${config.cmsUrl}/page/edit",
+                removeUrl: "${config.cmsUrl}/page/remove",
+                createUrl: "${config.cmsUrl}/page/add",
                 columns: [
                     {
                         checkbox: true

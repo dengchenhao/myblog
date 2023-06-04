@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${config.siteName}后台管理系统</title>
-    <link href="/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="${config.cmsUrl}/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <#if config.adminCssCdn?? && (config.adminCssCdn?length > 0)>
         ${config.adminCssCdn!}
     <#else >
@@ -28,8 +28,8 @@
         <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput-typeahead.css" rel="stylesheet">
         <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
     </#if>
-    <link href="/assets/css/bootstrap-treetable.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/css/zhyd.core.css" rel="stylesheet">
+    <link href="${config.cmsUrl}/assets/css/bootstrap-treetable.css" rel="stylesheet" type="text/css" />
+    <link href="${config.cmsUrl}/assets/css/zhyd.core.css" rel="stylesheet">
     <#nested>
 </head>
 <body class="nav-md">
@@ -150,7 +150,7 @@
                                             <label class="control-label col-md-2 col-sm-2 col-xs-12" for="nickname">分类 <span class="required">*</span></label>
                                             <div class="col-md-8 col-sm-8 col-xs-12">
                                                 <div class="input-group">
-                                                    <select class="form-control" name="typeId" id="typeId"  target="combox" data-url="/type/listAll" data-method="post" required="required"></select>
+                                                    <select class="form-control" name="typeId" id="typeId"  target="combox" data-url="${config.cmsUrl}/type/listAll" data-method="post" required="required"></select>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,7 +158,7 @@
                                             <label class="control-label col-md-2 col-sm-2 col-xs-12" for="mobile">标签(*3) <span class="required">*</span></label>
                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                 <input type="text" name="tags" target="tagsinput" data-bind-box="#tags-list">
-                                                <ul class="list-unstyled list-inline tags-list" id="tags-list" target="combox" data-url="/tag/listAll" data-method="post" style="max-height: 150px;overflow-y: scroll;"></ul>
+                                                <ul class="list-unstyled list-inline tags-list" id="tags-list" target="combox" data-url="${config.cmsUrl}/tag/listAll" data-method="post" style="max-height: 150px;overflow-y: scroll;"></ul>
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -291,8 +291,8 @@
                     <div class="col col-lg-4 col-sm-4 col-md-4 col-xs-4">
                         <fieldset>
                             <legend>关注公众号</legend>
-                            <a href="/assets/images/wechat_account_500x500.jpg" class="showImage" title="关注公众号：码一码" rel="external nofollow" style="display: block;text-align: center">
-                                <img src="/assets/images/wechat_account_500x500.jpg" class="img-rounded" alt="关注公众号：码一码" width="300">
+                            <a href="${config.cmsUrl}/assets/images/wechat_account_500x500.jpg" class="showImage" title="关注公众号：码一码" rel="external nofollow" style="display: block;text-align: center">
+                                <img src="${config.cmsUrl}/assets/images/wechat_account_500x500.jpg" class="img-rounded" alt="关注公众号：码一码" width="300">
                             </a>
                         </fieldset>
                     </div>
