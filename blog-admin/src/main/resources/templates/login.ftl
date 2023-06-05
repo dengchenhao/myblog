@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="baidu-site-verification" content="codeva-Igxwjz5xlO" />
     <title>${config.siteName}后台管理系统</title>
-    <link href="/assets/images/favicon.ico" rel="icon">
+    <link href="${config.cmsUrl}/assets/images/favicon.ico" rel="icon">
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.bootcdn.net/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" rel="stylesheet">
     <link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-    <link href="/assets/css/zhyd.core.css" rel="stylesheet">
+    <link href="${config.cmsUrl}/assets/css/zhyd.core.css" rel="stylesheet">
 </head>
 
 <body class="login">
@@ -24,7 +24,7 @@
                 <div class="login_wrapper">
                     <div class="animate form login_form" style="position: relative;">
                         <section class="login_content">
-                            <form action="/passport/signin" method="POST" id="login-form">
+                            <form action="${config.cmsUrl}/passport/signin" method="POST" id="login-form">
                                 <h1>登录管理系统</h1>
                                 <#if message??>
                                     <div class="alert alert-danger" role="alert">
@@ -77,14 +77,14 @@
 <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.staticfile.org/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
-<script src="/assets/js/zhyd.tool.js"></script>
+<script src="${config.cmsUrl}/assets/js/zhyd.tool.js"></script>
 <script>
     $("#modal").modal('show');
     $(".btn-login").click(function () {
         $(".login-loading").removeClass("hide");
         $.ajax({
             type: "POST",
-            url: "/passport/signin",
+            url: "${config.cmsUrl}/passport/signin",
             data: $("#login-form").serialize(),
             dataType: "json",
             success: function (json) {
@@ -94,13 +94,13 @@
                     window.location.href = historyUrl;
                 }else{
                     $.alert.error(json.message);
-                    $("#img-kaptcha").attr("src", '/getKaptcha?time=' + new Date().getTime());
+                    $("#img-kaptcha").attr("src", '${config.cmsUrl}/getKaptcha?time=' + new Date().getTime());
                 }
             }
         });
     });
     $("#img-kaptcha").click(function () {
-        $(this).attr("src", '/getKaptcha?time=' + new Date().getTime());
+        $(this).attr("src", '${config.cmsUrl}/getKaptcha?time=' + new Date().getTime());
     });
     document.onkeydown = function (event) {
         var e = event || window.event || arguments.callee.caller.arguments[0];

@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">模板管理</li>
             </ol>
         </@breadcrumb>
@@ -67,11 +67,11 @@
         $(function () {
             var options = {
                 modalName: "模板",
-                url: "/template/list",
-                getInfoUrl: "/template/get/{id}",
-                updateUrl: "/template/edit",
-                removeUrl: "/template/remove",
-                createUrl: "/template/add",
+                url: "${config.cmsUrl}/template/list",
+                getInfoUrl: "${config.cmsUrl}/template/get/{id}",
+                updateUrl: "${config.cmsUrl}/template/edit",
+                removeUrl: "${config.cmsUrl}/template/remove",
+                createUrl: "${config.cmsUrl}/template/add",
                 columns: [
                     {
                         checkbox: true

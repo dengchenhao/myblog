@@ -15,12 +15,12 @@
                         <li><a data-toggle="modal" title="修改密码" data-target="#updPasswordModal">修改密码</a></li>
                         <@shiro.hasRole name="role:root">
                         <li>
-                            <a href="/config">
+                            <a href="${config.cmsUrl}/config">
                                 <span>系统配置</span>
                             </a>
                         </li>
                         </@shiro.hasRole>
-                        <li><a href="/passport/logout"><i class="fa fa-sign-out pull-right"></i> 退出系统</a></li>
+                        <li><a href="${config.cmsUrl}/passport/logout"><i class="fa fa-sign-out pull-right"></i> 退出系统</a></li>
                     </ul>
                 </li>
                 <@shiro.hasPermission name="comments">
@@ -34,8 +34,8 @@
                             <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                 <#list getNewCommentInfo["comments"] as item>
                                     <li>
-                                        <a href="/comments">
-                                            <span class="image"><img src="${item.avatar}" onerror="this.src='/assets/images/user.png'" alt="user avatar"></span>
+                                        <a href="${config.cmsUrl}/comments">
+                                            <span class="image"><img src="${item.avatar}" onerror="this.src='${config.cmsUrl}/assets/images/user.png'" alt="user avatar"></span>
                                             <span>
                                                 <span>${item.nickname}</span>
                                                 <span class="time">${item.createTime?string('yyyy-MM-dd HH:mm:ss')}</span>
@@ -81,11 +81,11 @@
             </div>
             <div class="modal-body">
                 <div class="col-sm-12 col-md-12" style="text-align: center;margin: 0 auto;float: initial">
-                    <a href="/assets/images/reward/zfb_code.png" class="showImage" title="支付宝收钱码" rel="external nofollow">
-                        <img src="/assets/images/reward/zfb_code.png" alt="支付宝收钱码" class="img-rounded" style="width: 250px;height: auto;">
+                    <a href="${config.cmsUrl}/assets/images/reward/zfb_code.png" class="showImage" title="支付宝收钱码" rel="external nofollow">
+                        <img src="${config.cmsUrl}/assets/images/reward/zfb_code.png" alt="支付宝收钱码" class="img-rounded" style="width: 250px;height: auto;">
                     </a>
-                    <a href="/assets/images/reward/wx_code.png" class="showImage" title="微信收钱码" rel="external nofollow">
-                        <img src="/assets/images/reward/wx_code.png" alt="微信收钱码" class="img-rounded" style="width: 250px;height: auto">
+                    <a href="${config.cmsUrl}/assets/images/reward/wx_code.png" class="showImage" title="微信收钱码" rel="external nofollow">
+                        <img src="${config.cmsUrl}/assets/images/reward/wx_code.png" alt="微信收钱码" class="img-rounded" style="width: 250px;height: auto">
                     </a>
                 </div>
                 <div style="width: 100%;color: #a3a3a3;font-size: 16px;font-family: 'Microsoft YaHei';text-align: center;margin-top: 10px">

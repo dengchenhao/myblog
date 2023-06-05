@@ -43,12 +43,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.buttons.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.2.1/pnotify.nonblock.js"></script>-->
 
-<script src="/assets/js/bootstrap-treetable.js" type="text/javascript"></script>
-<script src="/assets/js/validator.js"></script>
-<script src="/assets/js/ajaxfileupload.js"></script>
-<script src="/assets/js/jquery-form.js"></script>
-<script src="/assets/js/zhyd.tool.js"></script>
-<script src="/assets/js/zhyd.upload-preview.js"></script>
-<script src="/assets/js/gentelella.core.js"></script>
-<script src="/assets/js/zhyd.core.js"></script>
-<script src="/assets/js/zhyd.table.js"></script>
+<script src="${config.cmsUrl}/assets/js/bootstrap-treetable.js" type="text/javascript"></script>
+<script src="${config.cmsUrl}/assets/js/validator.js"></script>
+<script src="${config.cmsUrl}/assets/js/ajaxfileupload.js"></script>
+<script src="${config.cmsUrl}/assets/js/jquery-form.js"></script>
+<script src="${config.cmsUrl}/assets/js/zhyd.tool.js"></script>
+<script src="${config.cmsUrl}/assets/js/zhyd.upload-preview.js"></script>
+<script src="${config.cmsUrl}/assets/js/gentelella.core.js"></script>
+<script src="${config.cmsUrl}/assets/js/zhyd.core.js"></script>
+<script src="${config.cmsUrl}/assets/js/zhyd.table.js"></script>

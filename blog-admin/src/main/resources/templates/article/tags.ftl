@@ -6,7 +6,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <@breadcrumb>
                 <ol class="breadcrumb">
-                    <li><a href="/">首页</a></li>
+                    <li><a href="${config.cmsUrl}/">首页</a></li>
                     <li class="active">文章标签管理</li>
                 </ol>
             </@breadcrumb>
@@ -69,11 +69,11 @@
         $(function () {
             var options = {
                 modalName: "标签",
-                url: "/tag/list",
-                getInfoUrl: "/tag/get/{id}",
-                updateUrl: "/tag/edit",
-                removeUrl: "/tag/remove",
-                createUrl: "/tag/add",
+                url: "${config.cmsUrl}/tag/list",
+                getInfoUrl: "${config.cmsUrl}/tag/get/{id}",
+                updateUrl: "${config.cmsUrl}/tag/edit",
+                removeUrl: "${config.cmsUrl}/tag/remove",
+                createUrl: "${config.cmsUrl}/tag/add",
                 columns: [
                     {
                         checkbox: true

@@ -20,8 +20,8 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <@breadcrumb>
                     <ol class="breadcrumb">
-                        <li><a href="/">首页</a></li>
-                        <li><a href="/articles">文章列表</a></li>
+                        <li><a href="${config.cmsUrl}/">首页</a></li>
+                        <li><a href="${config.cmsUrl}/articles">文章列表</a></li>
                         <li class="active">发布文章-<a href="https://simplemde.com/" target="_blank">Markdown 编辑器</a></li>
                     </ol>
                 </@breadcrumb>
@@ -33,8 +33,8 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a class="changeEditor" data-href="/article/publish-we">WangEditor 编辑器</a></li>
-                                        <li><a class="changeEditor" data-href="/article/publish-tiny">TinyMCE 编辑器</a></li>
+                                        <li><a class="changeEditor" data-href="${config.cmsUrl}/article/publish-we">WangEditor 编辑器</a></li>
+                                        <li><a class="changeEditor" data-href="${config.cmsUrl}/article/publish-tiny">TinyMCE 编辑器</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -83,17 +83,17 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/lib/highlight.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
-    <script type="text/javascript" src="/assets/js/inline-attachment.js"></script>
-    <script type="text/javascript" src="/assets/js/codemirror.inline-attachment.js"></script>
+    <script type="text/javascript" src="${config.cmsUrl}/assets/js/inline-attachment.js"></script>
+    <script type="text/javascript" src="${config.cmsUrl}/assets/js/codemirror.inline-attachment.js"></script>
     <script>
         var op = {
             id: "contentMd",
             uniqueId: "mdEditor_1",
-            uploadUrl: "/api/uploadFileForMd"
+            uploadUrl: "${config.cmsUrl}/api/uploadFileForMd"
         };
         zhyd.simpleMDE.init(op);
         articleId = '${id}';
         editorType = 'md';
     </script>
-    <script src="/assets/js/zhyd.publish-article.js"></script>
+    <script src="${config.cmsUrl}/assets/js/zhyd.publish-article.js"></script>
 </@footer>

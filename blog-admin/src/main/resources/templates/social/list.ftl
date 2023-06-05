@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">社会化登录配置管理</li>
             </ol>
         </@breadcrumb>
@@ -167,11 +167,11 @@
         $(function () {
             var options = {
                 modalName: "社会化登录配置",
-                url: "/social/config/list",
-                getInfoUrl: "/social/config/get/{id}",
-                updateUrl: "/social/config/edit",
-                removeUrl: "/social/config/remove",
-                createUrl: "/social/config/add",
+                url: "${config.cmsUrl}/social/config/list",
+                getInfoUrl: "${config.cmsUrl}/social/config/get/{id}",
+                updateUrl: "${config.cmsUrl}/social/config/edit",
+                removeUrl: "${config.cmsUrl}/social/config/remove",
+                createUrl: "${config.cmsUrl}/social/config/add",
                 columns: [
                     {
                         checkbox: true

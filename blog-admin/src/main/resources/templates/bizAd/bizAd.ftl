@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <ol class="breadcrumb">
-            <li><a href="/">首页</a></li>
+            <li><a href="${config.cmsUrl}/">首页</a></li>
             <li class="active">广告管理</li>
         </ol>
         <div class="x_panel">
@@ -132,11 +132,11 @@
         $(function () {
             var options = {
                 modalName: "广告",
-                url: "/bizAd/list",
-                getInfoUrl: "/bizAd/get/{id}",
-                updateUrl: "/bizAd/edit",
-                removeUrl: "/bizAd/remove",
-                createUrl: "/bizAd/add",
+                url: "${config.cmsUrl}/bizAd/list",
+                getInfoUrl: "${config.cmsUrl}/bizAd/get/{id}",
+                updateUrl: "${config.cmsUrl}/bizAd/edit",
+                removeUrl: "${config.cmsUrl}/bizAd/remove",
+                createUrl: "${config.cmsUrl}/bizAd/add",
                 columns: [
                     {
                         checkbox: true
@@ -183,7 +183,7 @@
                         width: '100px',
                         formatter: function (code) {
                             return code ? '<a href="' + code + '" class="showImage" rel="external nofollow">' +
-                                '<img src="' + code + '" onerror="this.src=\'/assets/images/favicon.ico\'" class="img-rounded" style="width: 80px;">' +
+                                '<img src="' + code + '" onerror="this.src=\'${config.cmsUrl}/assets/images/favicon.ico\'" class="img-rounded" style="width: 80px;">' +
                                 '</a>' : '-';
                         }
                     },

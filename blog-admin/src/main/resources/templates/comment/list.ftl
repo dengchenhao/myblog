@@ -6,7 +6,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <@breadcrumb>
                 <ol class="breadcrumb">
-                    <li><a href="/">首页</a></li>
+                    <li><a href="${config.cmsUrl}/">首页</a></li>
                     <li class="active">评论管理</li>
                 </ol>
             </@breadcrumb>
@@ -132,11 +132,11 @@
         $(function () {
             var options = {
                 modalName: "评论",
-                url: "/comment/list",
-                getInfoUrl: "/comment/get/{id}",
-                updateUrl: "/comment/edit",
-                removeUrl: "/comment/remove",
-                createUrl: "/comment/add",
+                url: "${config.cmsUrl}/comment/list",
+                getInfoUrl: "${config.cmsUrl}/comment/get/{id}",
+                updateUrl: "${config.cmsUrl}/comment/edit",
+                removeUrl: "${config.cmsUrl}/comment/remove",
+                createUrl: "${config.cmsUrl}/comment/add",
                 columns: [
                     {
                         checkbox: true
@@ -238,7 +238,7 @@
                     if (validator.checkAll($replyForm)) {
                         $.ajax({
                             type: "post",
-                            url: "/comment/reply",
+                            url: "${config.cmsUrl}/comment/reply",
                             data: $replyForm.serialize(),
                             success: function (json) {
                                 $.alert.ajaxSuccess(json);
@@ -271,7 +271,7 @@
                     if (validator.checkAll($auditForm)) {
                         $.ajax({
                             type: "post",
-                            url: "/comment/audit",
+                            url: "${config.cmsUrl}/comment/audit",
                             data: $("#auditForm").serialize(),
                             success: function (json) {
                                 $.alert.ajaxSuccess(json);

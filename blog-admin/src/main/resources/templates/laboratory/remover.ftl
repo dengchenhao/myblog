@@ -30,7 +30,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">文章搬运工</li>
             </ol>
         </@breadcrumb>
@@ -480,7 +480,7 @@
 
         $.ajax({
             type: "post",
-            url: "/type/listAll",
+            url: "${config.cmsUrl}/type/listAll",
             success: function (json) {
                 $.alert.ajaxSuccess(json);
                 var data = '';

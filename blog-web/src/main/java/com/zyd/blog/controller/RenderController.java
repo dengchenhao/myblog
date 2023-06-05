@@ -72,7 +72,7 @@ public class RenderController {
      * @param model
      * @return
      */
-    @RequestMapping("/")
+    @RequestMapping("/admin/")
     @BussinessLog(value = "进入首页", platform = PlatformEnum.WEB)
     public ModelAndView home(ArticleConditionVO vo, Model model) {
         model.addAttribute("url", INDEX_URL);

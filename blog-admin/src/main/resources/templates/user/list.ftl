@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">用户管理</li>
             </ol>
         </@breadcrumb>
@@ -115,12 +115,12 @@
 
         $(function () {
             var options = {
-                url: "/user/list",
-                getInfoUrl: "/user/get/{id}",
-                updateUrl: "/user/edit",
-                removeUrl: "/user/remove",
-                createUrl: "/user/add",
-                saveRolesUrl: "/user/saveUserRoles",
+                url: "${config.cmsUrl}/user/list",
+                getInfoUrl: "${config.cmsUrl}/user/get/{id}",
+                updateUrl: "${config.cmsUrl}/user/edit",
+                removeUrl: "${config.cmsUrl}/user/remove",
+                createUrl: "${config.cmsUrl}/user/add",
+                saveRolesUrl: "${config.cmsUrl}/user/saveUserRoles",
                 columns: [
                     {
                         checkbox: true
@@ -206,7 +206,7 @@
                     async: false,
                     type: "POST",
                     data: {uid: userId},
-                    url: '/roles/rolesWithSelected',
+                    url: '${config.cmsUrl}/roles/rolesWithSelected',
                     dataType: 'json',
                     success: function (json) {
                         var data = json.data;

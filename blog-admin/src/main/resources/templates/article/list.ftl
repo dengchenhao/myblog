@@ -6,7 +6,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <@breadcrumb>
                 <ol class="breadcrumb">
-                    <li><a href="/">首页</a></li>
+                    <li><a href="${config.cmsUrl}/">首页</a></li>
                     <li class="active">文章管理</li>
                 </ol>
             </@breadcrumb>
@@ -29,7 +29,7 @@
                     <div class="<#--table-responsive-->">
                         <div class="btn-group hidden-xs" id="toolbar">
                             <@shiro.hasPermission name="article:publish">
-                                <a class="btn btn-success" title="发表文章" href="/article/publish-${config.articleEditor!'we'}"> <i class="fa fa-pencil fa-fw"></i>  </a>
+                                <a class="btn btn-success" title="发表文章" href="${config.cmsUrl}/article/publish-${config.articleEditor!'we'}"> <i class="fa fa-pencil fa-fw"></i>  </a>
                             </@shiro.hasPermission>
                             <@shiro.hasPermission name="article:batchDelete">
                                 <button id="btn_delete_ids" type="button" class="btn btn-danger" title="删除选中">
@@ -71,7 +71,7 @@
         // var top = row.top ? '<i class="fa fa-arrow-circle-down"></i>取消置顶' : '<i class="fa fa-arrow-circle-up"></i>置顶';
         var operateBtn = [
             '<@shiro.hasPermission name="article:push"><a class="btn btn-sm btn-info btn-push" title="推送" data-id="' + trId + '"><i class="fa fa-send-o"></i></a></@shiro.hasPermission>',
-            '<@shiro.hasPermission name="article:edit"><a class="btn btn-sm btn-success" href="/article/update/' + trId + '"><i class="fa fa-edit fa-fw"></i></a></@shiro.hasPermission>',
+            '<@shiro.hasPermission name="article:edit"><a class="btn btn-sm btn-success" href="${config.cmsUrl}/article/update/' + trId + '"><i class="fa fa-edit fa-fw"></i></a></@shiro.hasPermission>',
             '<@shiro.hasPermission name="article:delete"><a class="btn btn-sm btn-danger btn-remove" data-id="' + trId + '"><i class="fa fa-trash-o fa-fw"></i></a></@shiro.hasPermission>',
             <#--'<@shiro.hasPermission name="article:top"><a class="btn btn-sm btn-success btn-top" data-id="' + trId + '">' + top + '</a></@shiro.hasPermission>',-->
             <#--'<@shiro.hasPermission name="article:recommend"><a class="btn btn-sm btn-success btn-recommend" data-id="' + trId + '">' + recommended + '</a></@shiro.hasPermission>'-->
@@ -83,9 +83,9 @@
         var options = {
             modalName: "文章",
             formId: "#article1",
-            url: "/article/list",
-            getInfoUrl: "/article/get/{id}",
-            removeUrl: "/article/remove",
+            url: "${config.cmsUrl}/article/list",
+            getInfoUrl: "${config.cmsUrl}/article/get/{id}",
+            removeUrl: "${config.cmsUrl}/article/remove",
             columns: [
                 {
                     checkbox: true
@@ -110,7 +110,7 @@
                     align: 'center',
                     editable: false,
                     formatter: function (code, row, index) {
-                        return code ? '<a href="' + code + '" class="showImage" title="' + row.title + '" rel="external nofollow"><img src="' + code + '" alt="' + row.title + '" onerror="this.src=\'/assets/images/favicon.ico\'" class="img-rounded" style="width: 30px;height: auto;"></a>' : '-';
+                        return code ? '<a href="' + code + '" class="showImage" title="' + row.title + '" rel="external nofollow"><img src="' + code + '" alt="' + row.title + '" onerror="this.src=\'${config.cmsUrl}/assets/images/favicon.ico\'" class="img-rounded" style="width: 30px;height: auto;"></a>' : '-';
                     }
                 }, {
                     field: 'comment',
@@ -200,7 +200,7 @@
 
             $.ajax({
                 type: "post",
-                url: "/article/update/" + type,
+                url: "${config.cmsUrl}/article/update/" + type,
                 traditional: true,
                 data: {'id': id},
                 success: function (json) {
@@ -245,7 +245,7 @@
             $.alert.confirm("确定批量发布？发布完成后用户可见", function () {
                 $.ajax({
                     type: "post",
-                    url: "/article/batchPublish",
+                    url: "${config.cmsUrl}/article/batchPublish",
                     traditional: true,
                     data: {'ids': selectedId},
                     success: function (json) {
@@ -263,7 +263,7 @@
             $.alert.confirm("确定推送到百度站长平台？", function () {
                 $.ajax({
                     type: "post",
-                    url: "/article/pushToBaidu/urls",
+                    url: "${config.cmsUrl}/article/pushToBaidu/urls",
                     traditional: true,
                     data: {'ids': ids},
                     success: function (json) {

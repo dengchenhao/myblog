@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Slf4j
 @Controller
+
 public class KaptchaController {
 
     @GetMapping("/getKaptcha")

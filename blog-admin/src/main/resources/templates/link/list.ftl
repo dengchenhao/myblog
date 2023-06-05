@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">友情链接管理</li>
             </ol>
         </@breadcrumb>
@@ -115,11 +115,11 @@
         $(function () {
             var options = {
                 modalName: "友情链接",
-                url: "/link/list",
-                getInfoUrl: "/link/get/{id}",
-                updateUrl: "/link/edit",
-                removeUrl: "/link/remove",
-                createUrl: "/link/add",
+                url: "${config.cmsUrl}/link/list",
+                getInfoUrl: "${config.cmsUrl}/link/get/{id}",
+                updateUrl: "${config.cmsUrl}/link/edit",
+                removeUrl: "${config.cmsUrl}/link/remove",
+                createUrl: "${config.cmsUrl}/link/add",
                 columns: [
                     {
                         checkbox: true

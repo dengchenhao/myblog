@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">图片库管理</li>
             </ol>
         </@breadcrumb>
@@ -59,7 +59,7 @@
 
             function loadData(pageNumber){
                 $.ajax({
-                    url: "/file/list",
+                    url: "${config.cmsUrl}/file/list",
                     data: {pageNumber: pageNumber},
                     type: "POST",
                     success: function (json) {
@@ -190,7 +190,7 @@
                     if (validator.checkAll($form)) {
                         $form.ajaxSubmit({
                             type: "post",
-                            url: "/file/add",
+                            url: "${config.cmsUrl}/file/add",
                             success: function (json) {
                                 $.alert.ajaxSuccess(json, function () {
                                     window.location.reload();

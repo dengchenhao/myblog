@@ -5,7 +5,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <@breadcrumb>
             <ol class="breadcrumb">
-                <li><a href="/">首页</a></li>
+                <li><a href="${config.cmsUrl}/">首页</a></li>
                 <li class="active">角色管理</li>
             </ol>
         </@breadcrumb>
@@ -100,12 +100,12 @@
 
         $(function () {
             var options = {
-                url: "/roles/list",
-                getInfoUrl: "/roles/get/{id}",
-                updateUrl: "/roles/edit",
-                removeUrl: "/roles/remove",
-                createUrl: "/roles/add",
-                saveRolesUrl: "/roles/saveRoleResources",
+                url: "${config.cmsUrl}/roles/list",
+                getInfoUrl: "${config.cmsUrl}/roles/get/{id}",
+                updateUrl: "${config.cmsUrl}/roles/edit",
+                removeUrl: "${config.cmsUrl}/roles/remove",
+                createUrl: "${config.cmsUrl}/roles/add",
+                saveRolesUrl: "${config.cmsUrl}/roles/saveRoleResources",
                 columns: [{
                     checkbox: true
                 }, {
@@ -151,7 +151,7 @@
                     async: false,
                     type: "POST",
                     data: {rid: rolesId},
-                    url: '/resources/resourcesWithSelected',
+                    url: '${config.cmsUrl}/resources/resourcesWithSelected',
                     dataType: 'json',
                     success: function (json) {
                         var data = json.data;

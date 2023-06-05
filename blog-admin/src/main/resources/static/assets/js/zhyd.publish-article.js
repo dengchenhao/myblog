@@ -10,7 +10,7 @@ if(articleId){
     setTimeout(function () {
         $.ajax({
             type: "post",
-            url: "/article/get/" + articleId,
+            url: "${config.cmsUrl}/article/get/" + articleId,
             success: function (json) {
                 $.alert.ajaxSuccess(json);
                 var info = json.data;
