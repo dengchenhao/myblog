@@ -47,7 +47,7 @@
     <div class="item form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-3" for="url">选择图片 <span class="required">*</span></label>
         <div class="col-md-7 col-sm-7 col-xs-7">
-            <input type="file" class="form-control" name="file" id="file" accept="image/bmp,image/png,image/jpeg,image/jpg,image/gif,html" required="required"/>
+            <input type="file" class="form-control" name="file" id="file" accept="image/bmp,image/png,image/jpeg,image/jpg,image/gif,text/*" required="required"/>
         </div>
     </div>
 </@addOrUpdateMOdal>
