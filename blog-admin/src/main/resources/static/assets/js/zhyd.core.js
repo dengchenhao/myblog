@@ -10,6 +10,7 @@
  */
 var editor = null, simplemde = null;
 
+var cmsUrl = "/admin/";
 var zhyd = window.zhyd || {
     combox: {
         init: function (mockComboxCallback) {
@@ -624,7 +625,7 @@ $(document).ready(function () {
         if (validator.checkAll($form)) {
             $form.ajaxSubmit({
                 type: "POST",
-                url: '${config.cmsUrl}/passport/updatePwd',
+                url: cmsUrl+'/passport/updatePwd',
                 success: function (json) {
                     $.alert.ajaxSuccess(json);
                     if (json.status == 200) {

@@ -5,12 +5,12 @@
  * @since 1.0
  */
 var $publishForm = $("#publishForm");
-
+var cmsUrl = "/admin/";
 if(articleId){
     setTimeout(function () {
         $.ajax({
             type: "post",
-            url: "${config.cmsUrl}/article/get/" + articleId,
+            url: cmsUrl+"/article/get/" + articleId,
             success: function (json) {
                 $.alert.ajaxSuccess(json);
                 var info = json.data;
@@ -104,13 +104,13 @@ $(".publishBtn").click(function () {
 
         $publishForm.ajaxSubmit({
             type: "post",
-            url: "/article/save",
+            url: cmsUrl+"/article/save",
             success: function (json) {
                 if(isMarkdown == 1) {
                     $.tool.delCache("smde_" + op.uniqueId);
                 }
                 $.alert.ajaxSuccess(json, function () {
-                    window.location.href = '/articles';
+                    window.location.href = cmsUrl+'/articles';
                 });
             },
             error: $.alert.ajaxError

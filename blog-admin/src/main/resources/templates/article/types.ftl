@@ -41,7 +41,7 @@
     <div class="item form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">父级 </label>
         <div class="col-md-6 col-sm-6 col-xs-6">
-            <select id="pid" name="pid" class="form-control col-md-5 col-xs-5" target="combox" data-url="/type/listParent" data-method="post"></select>
+            <select id="pid" name="pid" class="form-control col-md-5 col-xs-5" target="combox" data-url="${config.cmsUrl}/type/listParent" data-method="post"></select>
         </div>
     </div>
     <div class="item form-group">
@@ -85,7 +85,7 @@
     </div>
 </@addOrUpdateMOdal>
 <@footer>
-    <script type="text/javascript" src="/assets/js/zhyd.treetable.js"></script>
+    <script type="text/javascript" src="${config.cmsUrl}/assets/js/zhyd.treetable.js"></script>
     <script>
         /**
          * 操作按钮

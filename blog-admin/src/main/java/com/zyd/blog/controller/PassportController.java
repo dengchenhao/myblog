@@ -2,6 +2,8 @@ package com.zyd.blog.controller;
 
 import com.zyd.blog.business.annotation.BussinessLog;
 import com.zyd.blog.business.entity.UserPwd;
+import com.zyd.blog.business.enums.ConfigKeyEnum;
+import com.zyd.blog.business.service.SysConfigService;
 import com.zyd.blog.business.service.SysUserService;
 import com.zyd.blog.framework.holder.RequestHolder;
 import com.zyd.blog.framework.object.ResponseVO;
@@ -45,6 +47,8 @@ public class PassportController {
     private AppProperties config;
     @Autowired
     private SysUserService userService;
+    @Autowired
+    private SysConfigService configService;
 
     @BussinessLog("进入登录页面")
     @GetMapping("/login")
@@ -124,6 +128,7 @@ public class PassportController {
         // SecurityUtils.getSubject().logout();
         // 因为退出操作是由Shiro控制的
         redirectAttributes.addFlashAttribute("message", "您已安全退出");
-        return ResultUtil.redirect("index");
+        String historyUrl = configService.getByKey(ConfigKeyEnum.CMS_URL.getKey()).getConfigValue();
+        return ResultUtil.redirect(historyUrl+"index");
     }
 }

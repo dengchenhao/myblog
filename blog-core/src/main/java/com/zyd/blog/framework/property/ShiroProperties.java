@@ -1,7 +1,10 @@
 package com.zyd.blog.framework.property;
 
+import com.zyd.blog.business.enums.ConfigKeyEnum;
+import com.zyd.blog.business.service.SysConfigService;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;

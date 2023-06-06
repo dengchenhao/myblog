@@ -2,6 +2,8 @@ package com.zyd.blog.core.interceptor;
 
 import com.zyd.blog.business.consts.SessionConst;
 import com.zyd.blog.business.entity.User;
+import com.zyd.blog.business.enums.ConfigKeyEnum;
+import com.zyd.blog.business.service.SysConfigService;
 import com.zyd.blog.business.service.SysUserService;
 import com.zyd.blog.util.PasswordUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -29,10 +31,13 @@ public class RememberAuthenticationInterceptor implements HandlerInterceptor {
 
     @Autowired
     private SysUserService userService;
+    @Autowired
+    private SysConfigService sysConfigService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Subject subject = SecurityUtils.getSubject();
+        String cms = sysConfigService.getByKey(ConfigKeyEnum.CMS_URL.getKey()).getConfigValue();
         if (subject.isAuthenticated()) {
             return true;
         }
@@ -42,7 +47,7 @@ public class RememberAuthenticationInterceptor implements HandlerInterceptor {
         }
         if(!subject.isRemembered()) {
             log.warn("未设置“记住我”,跳转到登录页...");
-            response.sendRedirect(request.getContextPath() + "/passport/login");
+            response.sendRedirect(request.getContextPath() +cms+ "/passport/login");
             return false;
         }
         try {
@@ -54,7 +59,7 @@ public class RememberAuthenticationInterceptor implements HandlerInterceptor {
             log.info("[{}] - 已自动登录", user.getUsername());
         } catch (Exception e) {
             log.error("自动登录失败", e);
-            response.sendRedirect(request.getContextPath() + "/passport/login");
+            response.sendRedirect(request.getContextPath() + cms+ "/passport/login");
             return false;
         }
         return true;

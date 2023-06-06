@@ -91,7 +91,7 @@
                 $(".login-loading").addClass("hide");
                 if (json.status == 200) {
                     var historyUrl = json.data || "/";
-                    window.location.href = historyUrl;
+                    window.location.href = ${config.cmsUrl}+historyUrl;
                 }else{
                     $.alert.error(json.message);
                     $("#img-kaptcha").attr("src", '${config.cmsUrl}/getKaptcha?time=' + new Date().getTime());
