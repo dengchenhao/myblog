@@ -48,7 +48,7 @@
                         </ul>
                         <div id="myTabContent" class="tab-content">
                             <div role="tabpanel" class="tab-pane fade active in" id="multiple" aria-labelledby="multiple-tab">
-                                <form id="removerForm" action="/remover/run" target="spiderFrame" method="post" class="form-horizontal form-label-left" novalidate>
+                                <form id="removerForm" action="${config.cmsUrl}/remover/run" target="spiderFrame" method="post" class="form-horizontal form-label-left" novalidate>
                                     <#-- 左侧 -->
                                     <div class="col-md-6">
                                         <div class="x_panel">
@@ -259,7 +259,7 @@
                                 </form>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="single" aria-labelledby="single-tab">
-                                <form id="removerSingleForm" action="/remover/single" target="spiderFrame" method="post" class="form-horizontal form-label-left" novalidate>
+                                <form id="removerSingleForm" action="${config.cmsUrl}/remover/single" target="spiderFrame" method="post" class="form-horizontal form-label-left" novalidate>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-3" for="url">转图存片</label>
                                         <div class="col-md-7 col-sm-7 col-xs-7">
@@ -508,7 +508,7 @@
             $.alert.confirm("确定停止当前进程?", function () {
                 $.ajax({
                     type: "post",
-                    url: "/remover/stop",
+                    url: "${config.cmsUrl}/remover/stop",
                     success: function (json) {
                         $.alert.ajaxSuccess(json);
                         changeBtnState(false)
