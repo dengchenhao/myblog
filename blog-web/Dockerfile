@@ -11,7 +11,7 @@ ENV TZ=PRC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # 指定容器端口
-EXPOSE 8085
+EXPOSE 8443
 
 # 添加本地 JAR 到容器内
 ADD target/blog-web.jar app.jar

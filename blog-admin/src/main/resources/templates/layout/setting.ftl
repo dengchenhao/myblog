@@ -46,7 +46,7 @@
                                 </#list>
                                 <li id="event-li">
                                     <div class="text-center">
-                                        <a href="/comments">
+                                        <a href="${config.cmsUrl}/comments">
                                             <strong>立即处理</strong>
                                             <i class="fa fa-angle-right"></i>
                                         </a>

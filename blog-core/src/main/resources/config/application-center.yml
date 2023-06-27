@@ -6,7 +6,7 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       test-while-idle: false
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://${ONEBLOG_DATASOURCE_HOST:127.0.0.1}:${ONEBLOG_DATASOURCE_PORT:3306}/${ONEBLOG_DATASOURCE_DATABASE_NAME:dblog}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false
+    url: jdbc:mysql://${ONEBLOG_DATASOURCE_HOST:${localIP}}:${ONEBLOG_DATASOURCE_PORT:3306}/${ONEBLOG_DATASOURCE_DATABASE_NAME:dblog}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false
     username: ${ONEBLOG_DATASOURCE_USERNAME:root}
     password: ${ONEBLOG_DATASOURCE_PASSWORD:123456}
 
@@ -14,7 +14,7 @@ spring:
   redis:
     database: ${ONEBLOG_REDIS_DATABASE_INDEX:1}
     # Redis服务器地址
-    host: ${ONEBLOG_REDIS_HOST:127.0.0.1}
+    host: ${ONEBLOG_REDIS_HOST:${localIP}}
     # Redis服务器连接端口
     port: ${ONEBLOG_REDIS_PORT:6379}
     # Redis服务器连接密码（默认为空）
@@ -89,3 +89,4 @@ pagehelper:
 app:
   version: v2.3.4
   enableRedisCache: ${ONEBLOG_ENABLE_REDIS_CACHE:false}
+localIP: 172.21.16.184

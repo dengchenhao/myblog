@@ -18,3 +18,6 @@ ADD target/blog-admin.jar app.jar
 
 # 容器启动后执行的命令
 ENTRYPOINT ["java", "-jar","app.jar" , "-Djava.security.egd=file:/dev/./urandom","$PARAMS"]
+
+
+# 注 需要创建挂载/home/dch/blog/nginx/html/oneblog/:/home/dch/blog/nginx/html/oneblog/(在数据库中localFilePath配置的地址)

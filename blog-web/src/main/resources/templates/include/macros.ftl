@@ -3,6 +3,7 @@
 <#include "/common/annotation.ftl">
 <!DOCTYPE HTML>
 <html lang="zh-CN">
+<meta name="referrer" content="never" >
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

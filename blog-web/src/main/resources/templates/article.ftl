@@ -1,4 +1,5 @@
 <#include "include/macros.ftl">
+<meta name="referrer" content="never" >
 <@header title="${article.title} | ${config.siteName}" keywords="${article.keywords!},${config.siteName}" description="${article.description!}"
     canonical="/article/${article.id}" hasEditor=true>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" />
@@ -262,11 +263,11 @@
     <#if (config.enableHitokoto == 1 || config.enableHitokoto == "1")>
         <script src="https://v1.hitokoto.cn/?encode=js&c=i&select=.hitokoto" defer></script>
     </#if>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/lib/highlight.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+    <script referrerpolicy="no-referrer" type="text/javascript" src="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/lib/highlight.min.js"></script>
+	<script referrerpolicy="no-referrer" type="text/javascript" src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
+    <script referrerpolicy="no-referrer" type="text/javascript" src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
 <#--    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/jquery.share.min.js"></script>-->
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js" type="text/javascript"></script>
+    <script referrerpolicy="no-referrer" src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js" type="text/javascript"></script>
 
     <script>
         var isPrivate = '${article.private}';

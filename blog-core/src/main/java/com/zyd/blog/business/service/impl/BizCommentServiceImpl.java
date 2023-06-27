@@ -207,9 +207,9 @@ public class BizCommentServiceImpl implements BizCommentService {
         }
         String url = comment.getUrl();
         String avatar = comment.getAvatar();
-        if ((!StringUtils.isEmpty(avatar) && !RegexUtils.isUrl(avatar)) || (!StringUtils.isEmpty(url) && !RegexUtils.isUrl(url))) {
-            throw new ZhydCommentException("链接地址不正确");
-        }
+//        if ((!StringUtils.isEmpty(avatar) && !RegexUtils.isUrl(avatar)) || (!StringUtils.isEmpty(url) && !RegexUtils.isUrl(url))) {
+//            throw new ZhydCommentException("链接地址不正确");
+//        }
         // 过滤非法属性和无用的空标签
         if (!XssKillerUtil.isValid(content) || !XssKillerUtil.isValid(comment.getAvatar())
                 || !XssKillerUtil.isValid(comment.getUrl()) || !XssKillerUtil.isValid(comment.getNickname())
