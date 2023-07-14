@@ -7,7 +7,7 @@
                 <h4><i class="fa fa-search"></i> 搜索文章</h4>
             </div>
             <div class="modal-body">
-                <form action="/" method="post" class="form-horizontal searchForm" id="searchForm">
+                <form action="${config.staticWebSite}/" method="post" class="form-horizontal searchForm" id="searchForm">
                     <input type="hidden" name="pageNumber" value="1">
                     <div class="input-group bottom-line">
                         <input type="text" class="form-control br-none" name="keywords" value="${model.keywords}" required="required" placeholder="输入搜索内容">

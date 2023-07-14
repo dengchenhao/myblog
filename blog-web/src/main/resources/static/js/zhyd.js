@@ -253,8 +253,28 @@ $(function () {
         $("#currentTime").html(now.format('yyyy年MM月dd日 hh时mm分ss秒') + " " + weekArr[now.getDay()]);
     }
 
+    getWeather();
+    function getWeather() {
+        var city = "合肥";
+        $.ajax({
+            type: "get",
+            // url: "https://query.asilu.com/weather/baidu/?city="+city,
+            url: "https://query.asilu.com/weather/baidu/",
+            success: function (json) {
+                console.log(json);
+                var text = json.city+"天气："+json.weather[0].weather+"，温度："+json.weather[0].temp;
+                $("#weather").html(text);
+            },
+            error: function () {
+                $.alert.ajaxError();
+                $.bubble.init();
+            }
+        });
+    }
+
     if ($.websocket) {
         var sitePath = appConfig.cmsPath;
+
         var schemes = {"http://": "ws://", "https://": "wss://"};
         var host, scheme;
 
@@ -266,12 +286,21 @@ $(function () {
             }
         });
         // 默认取8085端口的程序
-        host = host || document.domain + ":8085";
+        host = host || document.domain + ":8888";
+        console.log(document.domain);
+        var url = "";
         if (host) {
+            if (document.domain.startsWith("15862518424.gnway.cc")) {
+                url = "ws://" + document.domain + sitePath+"websocket";
+            } else {
+                url = "ws://" + host +sitePath+ "websocket";
+            }
+
             // 申请显示通知的权限
             $.notification.requestPermission();
             $.websocket.open({
-                host: scheme + host + "/websocket",
+                // host: scheme + host + "/websocket",
+                host: url,
                 reconnect: true,
                 callback: function (result) {
                     var resultJson = JSON.parse(result);

@@ -6,6 +6,12 @@
             </ul>
             <div class="clear"></div>
         </div>
+        <div class="pull-left">
+            <ul class="list-unstyled list-inline">
+                <li><span id="weather"></span></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
         <div class="menu-topmenu-container pull-right">
             <ul class="list-unstyled list-inline pull-left">
                 <li><a href="${config.siteUrl}/about" class="menu_a" title="关于博客" data-toggle="tooltip" data-placement="bottom">关于本站</a></li>

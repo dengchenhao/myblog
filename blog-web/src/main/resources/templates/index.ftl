@@ -142,7 +142,7 @@
                             <img src="${config.staticWebSite}/img/wrong.gif" class="center-block" alt="惩罚我" style="width: 110px;margin-top: -10px;">
                         </div>
                     </div>
-                    <form action="/" method="post" class="form-horizontal searchForm">
+                    <form action="${config.staticWebSite}/" method="post" class="form-horizontal searchForm">
                         <input type="hidden" name="pageNumber" value="1">
                         <div class="input-group">
                             <input type="text" class="form-control br-none" name="keywords" placeholder="换个姿势，再来一次~~">
