@@ -1,9 +1,11 @@
 package com.zyd.blog.plugin.file;
 
 import com.zyd.blog.business.entity.File;
+import com.zyd.blog.business.entity.Photo;
 import com.zyd.blog.business.entity.User;
 import com.zyd.blog.business.enums.ConfigKeyEnum;
 import com.zyd.blog.business.service.BizFileService;
+import com.zyd.blog.business.service.BizPhotoService;
 import com.zyd.blog.business.service.SysConfigService;
 import com.zyd.blog.file.AliyunOssApiClient;
 import com.zyd.blog.file.ApiClient;
@@ -14,6 +16,7 @@ import com.zyd.blog.file.exception.GlobalFileException;
 import com.zyd.blog.framework.exception.ZhydException;
 import com.zyd.blog.framework.holder.SpringContextHolder;
 import com.zyd.blog.persistence.beans.BizFile;
+import com.zyd.blog.persistence.beans.BizPhoto;
 import com.zyd.blog.util.BeanConvertUtil;
 import com.zyd.blog.util.SessionUtil;
 import org.springframework.util.StringUtils;
@@ -84,6 +87,27 @@ public class BaseFileUploader {
                 fileInfo.setUploadType(uploadType);
                 fileInfo.setStorageType(storageType);
                 fileService.insert(new File(fileInfo));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return virtualFile;
+    }
+
+    VirtualFile savePhoto(VirtualFile virtualFile, boolean save, String uploadType) {
+        if (save) {
+            BizPhotoService fileService = SpringContextHolder.getBean(BizPhotoService.class);
+            try {
+                SysConfigService configService = SpringContextHolder.getBean(SysConfigService.class);
+                Map<String, Object> config = configService.getConfigs();
+                String storageType = (String) config.get(ConfigKeyEnum.STORAGE_TYPE.getKey());
+
+                BizPhoto fileInfo = BeanConvertUtil.doConvert(virtualFile, BizPhoto.class);
+                User sessionUser = SessionUtil.getUser();
+                fileInfo.setUserId(null == sessionUser ? null : sessionUser.getId());
+                fileInfo.setUploadType(uploadType);
+                fileInfo.setStorageType(storageType);
+                fileService.insert(new Photo(fileInfo));
             } catch (Exception e) {
                 e.printStackTrace();
             }

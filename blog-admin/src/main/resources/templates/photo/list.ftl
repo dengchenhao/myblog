@@ -59,7 +59,7 @@
 
             function loadData(pageNumber){
                 $.ajax({
-                    url: "${config.cmsUrl}/file/list",
+                    url: "${config.cmsUrl}/photo/list",
                     data: {pageNumber: pageNumber},
                     type: "POST",
                     success: function (json) {
@@ -168,7 +168,7 @@
                             $.alert.confirm("确定删除该选中的文件？不可恢复，请确认！", function () {
                                 $.ajax({
                                     type: "POST",
-                                    url: "${config.cmsUrl}/file/remove",
+                                    url: "${config.cmsUrl}/photo/remove",
                                     traditional: true,
                                     data: data,
                                     success: function (json) {
@@ -190,7 +190,7 @@
                     if (validator.checkAll($form)) {
                         $form.ajaxSubmit({
                             type: "post",
-                            url: "${config.cmsUrl}/file/add",
+                            url: "${config.cmsUrl}/photo/add",
                             success: function (json) {
                                 $.alert.ajaxSuccess(json, function () {
                                     window.location.reload();

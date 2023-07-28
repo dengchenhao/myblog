@@ -3,7 +3,9 @@ package com.zyd.blog.business.service;
 
 import com.github.pagehelper.PageInfo;
 import com.zyd.blog.business.entity.File;
+import com.zyd.blog.business.entity.Photo;
 import com.zyd.blog.business.vo.FileConditionVO;
+import com.zyd.blog.business.vo.PhotoConditionVO;
 import com.zyd.blog.framework.object.AbstractService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,14 +16,16 @@ import org.springframework.web.multipart.MultipartFile;
  * @date 2018/12/14 09:23
  * @since 1.8
  */
-public interface BizFileService extends AbstractService<File, Long> {
+public interface BizPhotoService extends AbstractService<Photo, Long> {
 
-    PageInfo<File> findPageBreakByCondition(FileConditionVO vo);
+    PageInfo<Photo> findPageBreakByCondition(PhotoConditionVO vo);
 
-    File selectFileByPathAndUploadType(String filePath, String uploadType);
+    Photo selectFileByPathAndUploadType(String filePath, String uploadType);
 
     void remove(Long[] ids);
 
     int upload(MultipartFile[] file);
 
+    @Transactional(rollbackFor = Exception.class)
+    int uploadPhoto(MultipartFile[] file);
 }

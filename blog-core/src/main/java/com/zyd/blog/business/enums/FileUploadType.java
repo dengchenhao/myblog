@@ -11,6 +11,7 @@ public enum FileUploadType {
     COMMON("oneblog/"),
     QRCODE("oneblog/qrcode/"),
     SIMPLE("oneblog/article/"),
+    PHOTO("oneblog/photo/"),
     COVER_IMAGE("oneblog/cover/");
 
     private String path;

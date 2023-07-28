@@ -3,12 +3,16 @@ package com.zyd.blog.business.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zyd.blog.business.entity.File;
+import com.zyd.blog.business.entity.Photo;
 import com.zyd.blog.business.enums.FileUploadType;
 import com.zyd.blog.business.service.BizFileService;
+import com.zyd.blog.business.service.BizPhotoService;
 import com.zyd.blog.business.vo.FileConditionVO;
+import com.zyd.blog.business.vo.PhotoConditionVO;
 import com.zyd.blog.file.FileUploader;
 import com.zyd.blog.file.exception.GlobalFileException;
 import com.zyd.blog.persistence.beans.BizFile;
+import com.zyd.blog.persistence.beans.BizPhoto;
 import com.zyd.blog.persistence.mapper.BizFileMapper;
 import com.zyd.blog.persistence.mapper.BizPhotoMapper;
 import com.zyd.blog.plugin.file.GlobalFileUploader;
@@ -31,54 +35,52 @@ import java.util.List;
  * @since 1.8
  */
 @Service
-public class BizFileServiceImpl implements BizFileService {
+public class BizPhotoServiceImpl implements BizPhotoService {
 
-    @Autowired
-    private BizFileMapper shopFileMapper;
     @Autowired
     private BizPhotoMapper photoMapper;
 
     @Override
-    public PageInfo<File> findPageBreakByCondition(FileConditionVO vo) {
+    public PageInfo<Photo> findPageBreakByCondition(PhotoConditionVO vo) {
         PageHelper.startPage(vo.getPageNumber(), vo.getPageSize());
-        List<BizFile> list = shopFileMapper.findPageBreakByCondition(vo);
-        List<File> boList = getFiles(list);
+        List<BizPhoto> list = photoMapper.findPageBreakByCondition(vo);
+        List<Photo> boList = getFiles(list);
         if (boList == null) return null;
-        PageInfo bean = new PageInfo<BizFile>(list);
+        PageInfo bean = new PageInfo<BizPhoto>(list);
         bean.setList(boList);
         return bean;
     }
 
-    private List<File> getFiles(List<BizFile> list) {
+    private List<Photo> getFiles(List<BizPhoto> list) {
         if (CollectionUtils.isEmpty(list)) {
             return null;
         }
-        List<File> boList = new ArrayList<>();
-        for (BizFile bizFile : list) {
-            boList.add(new File(bizFile));
+        List<Photo> boList = new ArrayList<>();
+        for (BizPhoto bizFile : list) {
+            boList.add(new Photo(bizFile));
         }
         return boList;
     }
 
     @Override
-    public File selectFileByPathAndUploadType(String filePath, String uploadType) {
+    public Photo selectFileByPathAndUploadType(String filePath, String uploadType) {
         if (StringUtils.isEmpty(filePath)) {
             return null;
         }
-        BizFile file = new BizFile();
+        BizPhoto file = new BizPhoto();
         file.setFilePath(filePath);
         if (StringUtils.isEmpty(uploadType)) {
             file.setUploadType(uploadType);
         }
-        List<BizFile> fileList = shopFileMapper.select(file);
-        return CollectionUtils.isEmpty(fileList) ? null : new File(fileList.get(0));
+        List<BizPhoto> fileList = photoMapper.select(file);
+        return CollectionUtils.isEmpty(fileList) ? null : new Photo(fileList.get(0));
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void remove(Long[] ids) {
         for (Long id : ids) {
-            File oldFile = this.getByPrimaryKey(id);
+            Photo oldFile = this.getByPrimaryKey(id);
             this.removeByPrimaryKey(id);
             try {
                 FileUploader uploader = new GlobalFileUploader();
@@ -96,18 +98,31 @@ public class BizFileServiceImpl implements BizFileService {
         }
         for (MultipartFile multipartFile : file) {
             FileUploader uploader = new GlobalFileUploader();
-            uploader.upload(multipartFile, FileUploadType.COMMON.getPath(), true);
+            uploader.uploadPhoto(multipartFile, FileUploadType.PHOTO.getPath(), true);
         }
         return file.length;
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public File insert(File entity) {
+    public int uploadPhoto(MultipartFile[] file) {
+        if (null == file || file.length == 0) {
+            throw new GlobalFileException("请至少选择一张图片！");
+        }
+        for (MultipartFile multipartFile : file) {
+            FileUploader uploader = new GlobalFileUploader();
+            uploader.upload(multipartFile, FileUploadType.PHOTO.getPath(), true);
+        }
+        return file.length;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Photo insert(Photo entity) {
         Assert.notNull(entity, "Invalid parameter");
         entity.setCreateTime(new Date());
         entity.setUpdateTime(new Date());
-        shopFileMapper.insertSelective(entity.getFile());
+        photoMapper.insertSelective(entity.getFile());
         return entity;
     }
 
@@ -115,27 +130,28 @@ public class BizFileServiceImpl implements BizFileService {
     @Transactional(rollbackFor = Exception.class)
     public boolean removeByPrimaryKey(Long primaryKey) {
         Assert.notNull(primaryKey, "Invalid parameter");
-        return shopFileMapper.deleteByPrimaryKey(primaryKey) > 0;
+        return photoMapper.deleteByPrimaryKey(primaryKey) > 0;
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean updateSelective(File entity) {
+    public boolean updateSelective(Photo entity) {
         Assert.notNull(entity, "Invalid parameter");
         entity.setUpdateTime(new Date());
-        return shopFileMapper.updateByPrimaryKeySelective(entity.getFile()) > 0;
+        return photoMapper.updateByPrimaryKeySelective(entity.getFile()) > 0;
     }
 
     @Override
-    public File getByPrimaryKey(Long primaryKey) {
+    public Photo getByPrimaryKey(Long primaryKey) {
         Assert.notNull(primaryKey, "Invalid parameter");
-        BizFile entity = shopFileMapper.selectByPrimaryKey(primaryKey);
-        return new File(entity);
+        BizPhoto entity = photoMapper.selectByPrimaryKey(primaryKey);
+        return new Photo(entity);
     }
 
+
     @Override
-    public List<File> listAll() {
-        List<BizFile> list = shopFileMapper.selectAll();
+    public List<Photo> listAll() {
+        List<BizPhoto> list = photoMapper.selectAll();
 
         return getFiles(list);
     }

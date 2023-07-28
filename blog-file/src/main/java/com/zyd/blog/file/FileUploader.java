@@ -44,6 +44,15 @@ public interface FileUploader {
     VirtualFile upload(MultipartFile file, String uploadType, boolean save);
 
     /**
+     * 上传文件
+     *
+     * @param file       待上传的文件
+     * @param uploadType 文件上传类型，用来区分文件
+     * @param save       是否保存
+     */
+    VirtualFile uploadPhoto(MultipartFile file, String uploadType, boolean save);
+
+    /**
      * 删除文件
      *
      * @param filePath   文件路径

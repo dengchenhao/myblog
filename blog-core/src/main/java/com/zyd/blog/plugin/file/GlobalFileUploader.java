@@ -41,6 +41,13 @@ public class GlobalFileUploader extends BaseFileUploader implements FileUploader
     }
 
     @Override
+    public VirtualFile uploadPhoto(MultipartFile file, String uploadType, boolean save) {
+        ApiClient apiClient = this.getApiClient(uploadType);
+        VirtualFile virtualFile = apiClient.uploadImg(file);
+        return this.savePhoto(virtualFile, save, uploadType);
+    }
+
+    @Override
     public boolean delete(String filePath, String uploadType) {
         if (StringUtils.isEmpty(filePath)) {
             throw new GlobalFileException("[文件服务]文件删除失败，文件为空！");

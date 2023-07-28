@@ -216,6 +216,13 @@ public class RenderController {
         return ResultUtil.view("file/list");
     }
 
+    @RequiresPermissions("photo")
+    @BussinessLog("进入文件管理页面")
+    @GetMapping("/photo")
+    public ModelAndView photo(Model model) {
+        return ResultUtil.view("photo/list");
+    }
+
     @RequiresPermissions("socials")
     @BussinessLog("进入社会化登录配置管理页面")
     @GetMapping("/socials")
