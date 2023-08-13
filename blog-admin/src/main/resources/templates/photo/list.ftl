@@ -23,13 +23,25 @@
                         </button>
                     </@shiro.hasPermission>
                 </div>
+
+                <div class="item form-group">
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <div class="input-group">
+                            <#--                <select class="form-control" name="typeId" id="typeId"  target="combox" data-url="${config.cmsUrl}/type/listAll" data-method="post" required="required"></select>-->
+                            <select class="form-control" name="album" id="album"  target="combox" data-url="${config.cmsUrl}/bizPhotoAlbum/listAll" data-method="post" required="required"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button id="search-button" class="btn btn-primary"><i class="fa fa-search"></i>查询</button>
+                    </div>
+                </div>
                 <div class="x_panel">
                     <form id="file-form">
                         <div class="x_content file-container" id="file-container">
                             <div class="col-md-55">
                                 <div class="thumbnail">
                                     <div class="image view view-first">
-                                        <img style="display: block;margin: 0 auto;margin-top: 10px;" src="/assets/images/loading.gif" alt="image" />
+                                        <img style="display: block;margin: 0 auto;margin-top: 10px;" src="${config.cmsUrl}/assets/images/loading.gif" alt="image" />
                                     </div>
                                     <div class="caption">
                                         <p>暂无可用的图片... </p>
@@ -45,9 +57,18 @@
 </div>
 <@addOrUpdateMOdal defaultTitle="添加图片">
     <div class="item form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-3" for="albumId">选择相册 <span class="required">*</span></label>
+        <div class="col-md-7 col-sm-7 col-xs-7">
+            <div class="input-group">
+<#--                <select class="form-control" name="typeId" id="typeId"  target="combox" data-url="${config.cmsUrl}/type/listAll" data-method="post" required="required"></select>-->
+                <select class="form-control" name="albumId" id="albumId"  target="combox" data-url="${config.cmsUrl}/bizPhotoAlbum/listAll" data-method="post" required="required"></select>
+            </div>
+        </div>
+    </div>
+    <div class="item form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-3" for="url">选择图片 <span class="required">*</span></label>
         <div class="col-md-7 col-sm-7 col-xs-7">
-            <input type="file" class="form-control" name="file" id="file" accept="image/bmp,image/png,image/jpeg,image/jpg,image/gif,text/*" required="required"/>
+            <input type="file" class="form-control" name="file" id="file" accept="image/bmp,image/png,image/jpeg,image/jpg,image/gif" required="required"/>
         </div>
     </div>
 </@addOrUpdateMOdal>
@@ -55,12 +76,13 @@
     <script>
         var curSstorageType = '${config.storageType}';
         $(function () {
-            loadData(1);
+            loadData(1, null);
 
-            function loadData(pageNumber){
+            function loadData(pageNumber, albumId){
                 $.ajax({
                     url: "${config.cmsUrl}/photo/list",
-                    data: {pageNumber: pageNumber},
+                    data: {pageNumber: pageNumber, albumId:albumId},
+                    // data: {pageNumber: pageNumber},
                     type: "POST",
                     success: function (json) {
                         var tpl = '{{#list}}<div class="col-md-55">\n' +
@@ -80,7 +102,7 @@
                             '                            </div>\n' +
                             '                        </div>\n' +
                             '                        <div class="caption">\n' +
-                            '                            <p><span title="{{originalFileName}}">{{originalFileName}}</span><img src="/assets/images/icons/{{storageType}}.svg" alt="{{storageType}}" title="{{storageType}}"></p>\n' +
+                            '                            <p><span title="{{originalFileName}}">{{originalFileName}}</span><img src="${config.cmsUrl}/assets/images/icons/{{storageType}}.svg" alt="{{storageType}}" title="{{storageType}}"></p>\n' +
                             '                        </div>\n' +
                             '                    </div>\n' +
                             '                </div>{{/list}}';
@@ -105,13 +127,15 @@
                         $(".file-pagination").unbind("click").click(function () {
                             var $this = $(this);
                             var pageNumber = $this.data("page");
-                            loadData(!pageNumber || isNaN(pageNumber) ? 1 : parseInt(pageNumber));
+                            var albumId = $this.data("album");
+                            loadData(!pageNumber || isNaN(pageNumber) ? 1 : parseInt(pageNumber), albumId);
                         });
                         // 绑定分页-跳转页面点击事件
                         $(".file-jump").unbind("click").click(function () {
                             var $this = $(this);
                             var jumpTarget = $(".file-input").val();
-                            loadData(!jumpTarget || isNaN(jumpTarget) ? 1 : parseInt(jumpTarget));
+                            var albumId = $("album");
+                            loadData(!jumpTarget || isNaN(jumpTarget) ? 1 : parseInt(jumpTarget), albumId);
                         });
 
                         gentelella.initiICheck();
@@ -201,6 +225,17 @@
                     }
                 })
             });
+
+            // 搜索查询按钮触发事件
+            $(function() {
+                $("#search-button").click(function () {
+                    var $this = $(this);
+                    var albumId = $("#album").val();
+                    loadData(1, albumId);
+                })
+            })
         });
+
+
     </script>
 </@footer>

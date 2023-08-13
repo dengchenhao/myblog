@@ -112,6 +112,14 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.microsoft.cognitiveservices.speech/client-sdk -->
+        <dependency>
+            <groupId>com.microsoft.cognitiveservices.speech</groupId>
+            <artifactId>client-sdk</artifactId>
+            <version>1.30.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <!-- Maven控制Spring Profile -->

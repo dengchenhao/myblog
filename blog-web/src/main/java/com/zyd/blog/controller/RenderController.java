@@ -245,6 +245,17 @@ public class RenderController {
     }
 
     /**
+     * 相册
+     *
+     * @return
+     */
+    @GetMapping("/photoAlbum")
+    @BussinessLog(value = "进入相册页", platform = PlatformEnum.WEB)
+    public ModelAndView photoAlbum() {
+        return ResultUtil.view("photoAlbum");
+    }
+
+    /**
      * 归档目录
      *
      * @param model

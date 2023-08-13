@@ -9,5 +9,6 @@
         <link href="https://cdn.bootcdn.net/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
         <link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
     </#if>
+    <link href="${config.staticWebSite}/css/admin.zhyd.core.css" rel="stylesheet" type="text/css">
     <link href="${config.staticWebSite}/css/zhyd.core.css" rel="stylesheet" type="text/css">
     <link href="${config.staticWebSite}/css/zhyd.comment.css" rel="stylesheet" type="text/css">

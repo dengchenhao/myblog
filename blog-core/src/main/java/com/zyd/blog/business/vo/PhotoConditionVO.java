@@ -13,6 +13,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class PhotoConditionVO extends BaseConditionVO {
-
+    Long albumId;
 }
 

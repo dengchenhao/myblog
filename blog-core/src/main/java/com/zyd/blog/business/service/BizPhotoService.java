@@ -24,7 +24,7 @@ public interface BizPhotoService extends AbstractService<Photo, Long> {
 
     void remove(Long[] ids);
 
-    int upload(MultipartFile[] file);
+    int upload(MultipartFile[] file, Long albumId);
 
     @Transactional(rollbackFor = Exception.class)
     int uploadPhoto(MultipartFile[] file);

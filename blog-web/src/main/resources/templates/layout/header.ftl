@@ -117,6 +117,7 @@
                     </#if>
                 </@zhydTag>
                 <li><a href="${config.siteUrl}/guestbook" class="menu_a"><i class="fa fa-comments-o"></i>留言板</a></li>
+                <li><a href="${config.siteUrl}/photoAlbum" class="menu_a"><i class="fa fa-image"></i>相册</a></li>
                 <li><span class="pull-right nav-search main-search" data-toggle="modal" data-target=".nav-search-box"><i class="fa fa-search"></i></span></li>
             </ul>
         </div>

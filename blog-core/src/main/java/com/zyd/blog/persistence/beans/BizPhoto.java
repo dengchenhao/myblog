@@ -22,6 +22,7 @@ public class BizPhoto extends AbstractDO {
     public Integer width;
     public Integer height;
     private Long userId;
+    private Long albumId;
     private String originalFileName;
     private String filePath;
     private String fullFilePath;

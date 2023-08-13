@@ -94,7 +94,7 @@ public class BaseFileUploader {
         return virtualFile;
     }
 
-    VirtualFile savePhoto(VirtualFile virtualFile, boolean save, String uploadType) {
+    VirtualFile savePhoto(VirtualFile virtualFile, boolean save, String uploadType, Long albumId) {
         if (save) {
             BizPhotoService fileService = SpringContextHolder.getBean(BizPhotoService.class);
             try {
@@ -107,6 +107,7 @@ public class BaseFileUploader {
                 fileInfo.setUserId(null == sessionUser ? null : sessionUser.getId());
                 fileInfo.setUploadType(uploadType);
                 fileInfo.setStorageType(storageType);
+                fileInfo.setAlbumId(albumId);
                 fileService.insert(new Photo(fileInfo));
             } catch (Exception e) {
                 e.printStackTrace();

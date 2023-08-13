@@ -41,10 +41,10 @@ public class GlobalFileUploader extends BaseFileUploader implements FileUploader
     }
 
     @Override
-    public VirtualFile uploadPhoto(MultipartFile file, String uploadType, boolean save) {
+    public VirtualFile uploadPhoto(MultipartFile file, String uploadType, boolean save, Long albumId) {
         ApiClient apiClient = this.getApiClient(uploadType);
         VirtualFile virtualFile = apiClient.uploadImg(file);
-        return this.savePhoto(virtualFile, save, uploadType);
+        return this.savePhoto(virtualFile, save, uploadType, albumId);
     }
 
     @Override

@@ -92,13 +92,13 @@ public class BizPhotoServiceImpl implements BizPhotoService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int upload(MultipartFile[] file) {
+    public int upload(MultipartFile[] file, Long albumId) {
         if (null == file || file.length == 0) {
             throw new GlobalFileException("请至少选择一张图片！");
         }
         for (MultipartFile multipartFile : file) {
             FileUploader uploader = new GlobalFileUploader();
-            uploader.uploadPhoto(multipartFile, FileUploadType.PHOTO.getPath(), true);
+            uploader.uploadPhoto(multipartFile, FileUploadType.PHOTO.getPath(), true, albumId);
         }
         return file.length;
     }

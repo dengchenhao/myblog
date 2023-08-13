@@ -223,6 +223,13 @@ public class RenderController {
         return ResultUtil.view("photo/list");
     }
 
+    @RequiresPermissions("bizPhotoAlbums")
+    @BussinessLog("进入页面")
+    @GetMapping("/bizPhotoAlbum")
+    public ModelAndView bizPhotoAlbum(Model model) {
+        return ResultUtil.view("bizPhotoAlbum/bizPhotoAlbum");
+    }
+
     @RequiresPermissions("socials")
     @BussinessLog("进入社会化登录配置管理页面")
     @GetMapping("/socials")

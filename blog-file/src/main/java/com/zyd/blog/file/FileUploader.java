@@ -50,7 +50,7 @@ public interface FileUploader {
      * @param uploadType 文件上传类型，用来区分文件
      * @param save       是否保存
      */
-    VirtualFile uploadPhoto(MultipartFile file, String uploadType, boolean save);
+    VirtualFile uploadPhoto(MultipartFile file, String uploadType, boolean save, Long albumId);
 
     /**
      * 删除文件

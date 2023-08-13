@@ -5,6 +5,7 @@
     <resultMap id="rm" type="com.zyd.blog.persistence.beans.BizPhoto">
         <result property="id" jdbcType="INTEGER" column="id"/>
         <result property="userId" jdbcType="INTEGER" column="user_id"/>
+		<result property="albumId" jdbcType="INTEGER" column="album_id"/>
         <result property="originalFileName" jdbcType="VARCHAR" column="original_file_name"/>
         <result property="size" jdbcType="INTEGER" column="size"/>
         <result property="suffix" jdbcType="VARCHAR" column="suffix"/>
@@ -25,6 +26,7 @@
 		SELECT
 			t.id,
 			t.user_id,
+			t.album_id,
 			t.original_file_name,
 			t.`size`,
 			t.`suffix`,
@@ -43,6 +45,9 @@
 			biz_photo t
 		WHERE
 			1 = 1
+		<if test="albumId != null and albumId != '' ">
+		    and album_id= #{albumId}
+		</if>
 		ORDER BY t.create_time DESC
 	</select>
 </mapper>

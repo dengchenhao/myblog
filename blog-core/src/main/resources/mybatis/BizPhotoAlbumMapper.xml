@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.zyd.blog.persistence.mapper.BizPhotoAlbumMapper">
+	<resultMap id="rm" type="com.zyd.blog.persistence.beans.BizPhotoAlbum">
+		<result property="id" jdbcType="INTEGER" column="id"/>
+		<result property="name" jdbcType="VARCHAR" column="name"/>
+		<result property="detail" jdbcType="VARCHAR" column="detail"/>
+		<result property="auth" jdbcType="VARCHAR" column="auth"/>
+		<result property="cover" jdbcType="VARCHAR" column="cover"/>
+		<result property="createTime" jdbcType="TIMESTAMP" column="create_time"/>
+		<result property="updateTime" jdbcType="TIMESTAMP" column="update_time"/>
+	</resultMap>
+
+	<select id="findPageBreakByCondition" parameterType="com.zyd.blog.business.vo.BizPhotoAlbumConditionVO" resultMap="rm">
+		SELECT
+			t.id,
+			t.name,
+			t.detail,
+			t.auth,
+			t.cover,
+			t.create_time,
+			t.update_time
+		FROM
+			biz_photo_album t
+		WHERE
+			1 = 1
+		ORDER BY t.create_time DESC
+	</select>
+</mapper>
+

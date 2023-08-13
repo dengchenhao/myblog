@@ -29,7 +29,7 @@
                             <div class="col-md-55">
                                 <div class="thumbnail">
                                     <div class="image view view-first">
-                                        <img style="display: block;margin: 0 auto;margin-top: 10px;" src="/assets/images/loading.gif" alt="image" />
+                                        <img style="display: block;margin: 0 auto;margin-top: 10px;" src="${config.cmsUrl}/assets/images/loading.gif" alt="image" />
                                     </div>
                                     <div class="caption">
                                         <p>暂无可用的图片... </p>
@@ -80,7 +80,7 @@
                             '                            </div>\n' +
                             '                        </div>\n' +
                             '                        <div class="caption">\n' +
-                            '                            <p><span title="{{originalFileName}}">{{originalFileName}}</span><img src="/assets/images/icons/{{storageType}}.svg" alt="{{storageType}}" title="{{storageType}}"></p>\n' +
+                            '                            <p><span title="{{originalFileName}}">{{originalFileName}}</span><img src="${config.cmsUrl}/assets/images/icons/{{storageType}}.svg" alt="{{storageType}}" title="{{storageType}}"></p>\n' +
                             '                        </div>\n' +
                             '                    </div>\n' +
                             '                </div>{{/list}}';
