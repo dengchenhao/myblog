@@ -12,6 +12,7 @@
             </ul>
             <div class="clear"></div>
         </div>
+
         <div class="menu-topmenu-container pull-right">
             <ul class="list-unstyled list-inline pull-left">
                 <li><a href="${config.siteUrl}/about" class="menu_a" title="关于博客" data-toggle="tooltip" data-placement="bottom">关于本站</a></li>
@@ -22,7 +23,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle menu_a" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i>${user.username!} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="/oauth/logout"><i class="fa fa-sign-out"></i>退出</a></li>
+                            <li><a href="${config.siteUrl}/oauth/logout"><i class="fa fa-sign-out"></i>退出</a></li>
                         </ul>
                     </li>
                 </ul>

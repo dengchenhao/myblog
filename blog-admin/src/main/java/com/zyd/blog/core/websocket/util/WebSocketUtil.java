@@ -60,7 +60,8 @@ public class WebSocketUtil {
      */
     public static void sendNotificationMsg(String msg, Set<Session> sessionSet) throws UnsupportedEncodingException {
         // 为了防止消息中存在特殊字符（比如换行符）等造成前台解析错误，此处编码一次。前台对应的需要解码
-        broadcast(generateMsg(NOTIFICATION_MSG_KEY, URLEncoder.encode(msg, Charsets.UTF_8.displayName())), sessionSet);
+//        broadcast(generateMsg(NOTIFICATION_MSG_KEY, URLEncoder.encode(msg, Charsets.UTF_8.displayName())), sessionSet);
+        broadcast(generateMsg(NOTIFICATION_MSG_KEY, msg), sessionSet);//上面会导致中文乱码
     }
 
     /**

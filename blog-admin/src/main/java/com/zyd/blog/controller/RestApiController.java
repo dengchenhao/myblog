@@ -1,7 +1,9 @@
 package com.zyd.blog.controller;
 
 import com.zyd.blog.business.annotation.BussinessLog;
+import com.zyd.blog.business.aspect.TtsService;
 import com.zyd.blog.business.enums.FileUploadType;
+import com.zyd.blog.business.util.TTSUtil.Gender;
 import com.zyd.blog.core.websocket.server.ZydWebsocketServer;
 import com.zyd.blog.core.websocket.util.WebSocketUtil;
 import com.zyd.blog.file.FileUploader;
@@ -36,6 +38,8 @@ public class RestApiController {
 
     @Autowired
     private ZydWebsocketServer websocketServer;
+    @Autowired
+    private TtsService ttsService;
 
     @BussinessLog("wangEditor编辑器中上传文件")
     @RequiresPermissions("article:publish")
@@ -69,6 +73,8 @@ public class RestApiController {
     @BussinessLog("通过websocket向前台发送通知")
     public ResponseVO notice(String msg) throws UnsupportedEncodingException {
         WebSocketUtil.sendNotificationMsg(msg, websocketServer.getOnlineUsers());
+        // 文字转语音
+        ttsService.getUSAudioBuffer(Gender.Male,msg,"en-US","en-US-Guy24kRUS");
         return ResultUtil.success("消息发送成功");
     }
 }

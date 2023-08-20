@@ -17,6 +17,10 @@ public enum ConfigKeyEnum {
      */
     DOMAIN("domain"),
     /**
+     * 服务域名
+     */
+    DOMAIN_NAME("domainName"),
+    /**
      * 博客地址
      */
     SITE_URL("siteUrl"),

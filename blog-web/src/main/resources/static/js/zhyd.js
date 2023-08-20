@@ -179,7 +179,7 @@ var PaymentUtils = window.payment || {
  */
 var wesocketMsgResolver = {
     online: function (value) {
-        value && $(".online").html(value);
+        value && $("#online").html(value);
     },
     notification: function (value) {
         value && $.notification.show({

@@ -96,13 +96,14 @@ public class RestArticleController {
             return ResultUtil.error(500, "请至少选择一条记录");
         }
         Map config = configService.getConfigs();
-        String siteUrl = (String) config.get(ConfigKeyEnum.SITE_URL.getKey());
+        String domainName = (String) config.get(ConfigKeyEnum.DOMAIN_NAME.getKey());
+        String siteUrl = domainName+(String) config.get(ConfigKeyEnum.SITE_URL.getKey());
         StringBuilder params = new StringBuilder();
         for (Long id : ids) {
             params.append(siteUrl).append("/article/").append(id).append("\n");
         }
         // urls: 推送, update: 更新, del: 删除
-        String url = UrlBuildUtil.getBaiduPushUrl(type.toString(), (String) config.get(ConfigKeyEnum.SITE_URL.getKey()), (String) config.get(ConfigKeyEnum.BAIDU_PUSH_TOKEN.getKey()));
+        String url = UrlBuildUtil.getBaiduPushUrl(type.toString(), siteUrl, (String) config.get(ConfigKeyEnum.BAIDU_PUSH_TOKEN.getKey()));
         String result = BaiduPushUtil.doPush(url, params.toString(), (String) config.get(ConfigKeyEnum.BAIDU_PUSH_COOKIE.getKey()));
         log.info(result);
         JSONObject resultJson = JSONObject.parseObject(result);
