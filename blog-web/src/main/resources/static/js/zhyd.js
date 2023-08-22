@@ -440,7 +440,7 @@ $(function () {
         $.comment.init({
             placeholder: appConfig.editorPlaceholder || '说点什么吧',
             wmName: appConfig.siteName,
-            wmUrl: appConfig.wwwPath,
+            wmUrl: window.location.hostname+appConfig.wwwPath,
             wmDesc: appConfig.editorAlert || '讲文明、要和谐'
         });
         $("#comment-form-btn").click(function () {
