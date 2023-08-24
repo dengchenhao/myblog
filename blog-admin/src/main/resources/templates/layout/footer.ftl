@@ -52,3 +52,4 @@
 <script src="${config.cmsUrl}/assets/js/gentelella.core.js"></script>
 <script src="${config.cmsUrl}/assets/js/zhyd.core.js"></script>
 <script src="${config.cmsUrl}/assets/js/zhyd.table.js"></script>
+<script src="${config.cmsUrl}/assets/js/dch.js"></script>
