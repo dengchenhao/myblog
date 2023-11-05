@@ -3,18 +3,15 @@ package com.zyd.blog.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageInfo;
 import com.zyd.blog.business.annotation.BussinessLog;
 import com.zyd.blog.business.entity.Article;
 import com.zyd.blog.business.entity.BizAdBo;
 import com.zyd.blog.business.entity.Comment;
 import com.zyd.blog.business.entity.Link;
-import com.zyd.blog.business.enums.ArticleStatusEnum;
 import com.zyd.blog.business.enums.CommentStatusEnum;
 import com.zyd.blog.business.enums.ConfigKeyEnum;
 import com.zyd.blog.business.enums.PlatformEnum;
 import com.zyd.blog.business.service.*;
-import com.zyd.blog.business.vo.ArticleConditionVO;
 import com.zyd.blog.business.vo.CommentConditionVO;
 import com.zyd.blog.framework.exception.ZhydArticleException;
 import com.zyd.blog.framework.exception.ZhydCommentException;
@@ -29,7 +26,6 @@ import com.zyd.blog.util.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -263,43 +259,6 @@ public class RestApiController {
 //        log.info("str: {}", str);
 //        log.info("urlN: {}, map: {}", urlN, JSONUtils.toJSONString(map));
         return ResultUtil.success("jssdkGetSignature获取成功", map);
-    }
-
-    /**
-     * 文章列表
-     *
-     * @param vo
-     * @param model
-     * @return
-     */
-    @GetMapping("/articleList")
-    @BussinessLog(value = "文章列表", platform = PlatformEnum.WEB)
-    public PageInfo<Article> articleList(ArticleConditionVO vo, Model model) {
-        vo.setStatus(ArticleStatusEnum.PUBLISHED.getCode());
-        PageInfo<Article> pageInfo = articleService.findPageBreakByCondition(vo);
-        return pageInfo;
-    }
-
-    /**
-     * 文章详情
-     *
-     * @param model
-     * @param articleId
-     * @return
-     */
-    @GetMapping("/article/{articleId}")
-    @BussinessLog(value = "进入文章[{2}]详情页", platform = PlatformEnum.WEB)
-    public Article article(@PathVariable("articleId") Long articleId) {
-        Article article = articleService.getByPrimaryKey(articleId);
-        if (article == null || ArticleStatusEnum.UNPUBLISHED.getCode() == article.getStatusEnum().getCode()) {
-            return null;
-        }
-        if (article.getPrivate()) {
-            article.setPassword(null);
-            article.setContent(null);
-            article.setContentMd(null);
-        }
-        return article;
     }
 
 }
