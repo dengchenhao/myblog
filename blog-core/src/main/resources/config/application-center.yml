@@ -89,4 +89,4 @@ pagehelper:
 app:
   version: v2.3.4
   enableRedisCache: ${ONEBLOG_ENABLE_REDIS_CACHE:false}
-localIP: 172.21.16.184
+localIP: localhost
